@@ -18,8 +18,9 @@ No final do arquivo [`index.html`](./index.html), localize o bloco de script com
 
 ```javascript
 const CHECKOUT_CONFIG = {
-  basico: "https://pay.kiwify.com.br/SEU_LINK_34",   // Plano Básico (R$ 34,90)
-  premium: "https://pay.kiwify.com.br/SEU_LINK_47"   // Plano Completo (R$ 47,90)
+  basico: "https://pay.kiwify.com.br/SEU_LINK_34",    // Plano Básico (R$ 34,90)
+  upgrade: "https://pay.kiwify.com.br/SEU_LINK_42",   // Oferta de Upgrade Downsell (R$ 42,90)
+  premium: "https://pay.kiwify.com.br/SEU_LINK_47"    // Plano Completo (R$ 47,90)
 };
 ```
 
@@ -27,34 +28,21 @@ Basta substituir as URLs com as suas chaves/links de checkout e salvar o arquivo
 
 ---
 
-## 💎 Refatoração de UI/UX, CRO e Responsividade
+## 💎 Recursos de UI/UX, CRO e Interatividade Implementados
 
 1. **Barra de Escassez e Timer (Topo):**
-   - Fundo nobre em vinho escuro com gradiente sutil.
-   - Mensagem: *"⏱️ Último dia para garantir o desconto de lançamento de R$ 500 por apenas R$ 34,90"*.
-   - **Countdown Regressivo Dinâmico:** Sincronizado com o **Horário de Brasília (UTC-3)**, encerrando automaticamente às 23:59:59 do dia atual no formato de badges `[HH] : [MM] : [SS]`.
-
-2. **Harmonia Visual & Paleta Clean Health:**
-   - **Fundo Principal:** Bege neutro / Off-white suave (`#FDFBF7`) que transmite calma, cuidado materno e autoridade médica/científica.
-   - **Tipografia:** Grafite escuro (`#1F2937`) para contraste absoluto e leitura confortável.
-   - **Tons de Apoio:** Vinho suave e rosé queimado elegante (`#881337`, `#BE123C`).
-   - **Botões de CTA:** Verde esmeralda de alta conversão (`#10B981` / `#059669`) com animação de pulsar suave.
-
-3. **Tabela de Preços com Efeito Decoy:**
-   - **Plano Básico (R$ 34,90):** Design minimalista, bordas neutras, sem destaque visual excessivo. Apenas o essencial (Protocolo + Desinflamação + Diástase). Botão secundário sóbrio.
-   - **Plano Completo (R$ 47,90) [DESTAQUE MÁXIMO]:** Card elevado (`shadow-card-pop`), borda destacada em vinho/dourado, badge *"ESCOLHA MAIS POPULAR / MELHOR CUSTO-BENEFÍCIO"*, incluindo Todos os Módulos + Glúteos + Bônus 1 + Bônus 2 + Acesso Vitalício + Atualizações. Botão verde vibrante *"QUERO O PLANO COMPLETO"*.
-
-4. **Seção de Garantia Blindada (Redesign de Confiança):**
-   - Card moderno com cantos arredondados (`rounded-3xl`), sombra suave e acabamento premium.
-   - Selo dourado de 7 dias com anel protetor.
-   - Título: *"Risco Zero: Garantia Incondicional de 7 Dias"*.
-   - Micro-ícones de segurança: *Compra 100% Segura*, *Reembolso Imediato*, *Privacidade Garantida*.
-
-5. **Seção Pré-Rodapé (CTA Final) e FAQ:**
-   - Seção final reformulada com fundo vinho nobre de alto contraste e tipografia branca/marfim perfeitamente legível.
-   - FAQ organizado em acordeão moderno com animação suave de abertura.
-
-6. **Otimização Mobile-First:**
-   - Container centralizado (`max-w-4xl mx-auto px-4 sm:px-6`).
-   - Todos os botões ocupam largura total (`w-full`) em telas móveis para facilitar o toque com o polegar.
-   - Escala tipográfica adaptada para evitar quebras de linhas desproporcionais na Hero.
+   - Texto refinado: *"⏱️ Último dia para garantir o acesso exclusivo com desconto de lançamento"*.
+   - **Contador Sincronizado com Brasília:** Blocos discretos em tom marfim/branco semi-transparente com números em vinho escuro (`[HH] : [MM] : [SS]`).
+2. **Estrutura Limpa (Sem Rótulos Didáticos):**
+   - Removidas todas as tags e demarcações internas (como "Público-Alvo", "Dores", "Módulo", "Planos"). Títulos e conteúdos fluem com naturalidade e autoridade.
+3. **Efeito de Relevo (Hover Lift):**
+   - Cards, botões e caixas de oferta possuem elevação suave (`hover:-translate-y-1 hover:shadow-lg`).
+   - Botão do Plano Completo estático e sólido em verde esmeralda premium (sem piscar).
+4. **Redesign Aberto da Garantia de 7 Dias:**
+   - Integração fluida ao fundo da página (sem bordas duras de container), com selo dourado limpo e ícones sutis de segurança.
+5. **Modal de Upgrade Downsell (Ao Clicar no Plano Básico):**
+   - Ao clicar no Plano Básico, abre uma janela especial oferecendo o upgrade para o Plano Completo por apenas R$ 42,90 (mais R$ 8,00), com opção clara de aceitar ou manter o básico.
+6. **Modal de Inatividade (150 segundos):**
+   - Monitor de inatividade que dispara um popup elegante de retenção caso a usuária fique 2,5 minutos sem interação (com limite de exibição de 1x por sessão).
+7. **Microcopy de Segurança e Credibilidade:**
+   - Textos de segurança (Criptografia 256 bits, Acesso Imediato, LGPD) reforçados abaixo dos botões e no rodapé.
