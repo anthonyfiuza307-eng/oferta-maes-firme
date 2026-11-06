@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protocolo Mães Firmes | Feche a Diástase em 5 Minutos</title>
+  <meta name="description" content="O estímulo neuromuscular comprovado pela ciência para desinflamar o abdômen, empinar os glúteos e resgatar o seu corpo de antes da gravidez.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              800: '#9f1239',
+              900: '#881337',
+              dark: '#0f172a'
+            },
+            accent: {
+              gold: '#D97706',
+              emerald: '#10B981',
+              emeraldDark: '#059669'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          boxShadow: {
+            'glow-rose': '0 10px 30px -5px rgba(225, 29, 72, 0.4)',
+            'glow-emerald': '0 10px 30px -5px rgba(16, 185, 129, 0.45)',
+          },
+          animation: {
+            'pulse-subtle': 'pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'bounce-slow': 'bounce 2s infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Smooth Adjustments */
+    .hero-gradient {
+      background: radial-gradient(circle at 50% 20%, #ffe4e6 0%, #ffffff 80%);
+    }
+    .card-pain {
+      transition: all 0.25s ease-in-out;
+    }
+    .card-pain:hover {
+      transform: translateY(-4px);
+    }
+    /* Before / After Slider */
+    .ba-slider-container {
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+    }
+    .ba-slider-after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- 1. TOP URGENCY TICKER -->
+  <div class="bg-gradient-to-r from-brand-900 via-brand-700 to-brand-900 text-white text-xs md:text-sm py-2.5 px-4 text-center font-medium shadow-md sticky top-0 z-50 flex items-center justify-center gap-2">
+    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-white text-brand-700 animate-pulse">
+      PROMOÇÃO VÁLIDA HOJE
+    </span>
+    <span>Últimas vagas com o desconto de lançamento de R$ 500 por apenas R$ 34,90</span>
+    <span class="hidden md:inline font-mono font-bold text-amber-300 ml-2" id="top-countdown">14:59</span>
+  </div>
+
+  <!-- 2. HERO SECTION -->
+  <header class="hero-gradient pt-8 pb-16 md:pt-14 md:pb-24 border-b border-rose-100 relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-rose-200/40 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -right-32 w-96 h-96 bg-amber-100/50 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+
+      <!-- Eyebrow Tag -->
+      <div class="inline-flex items-center gap-2 bg-rose-100/80 border border-rose-300/80 text-brand-800 px-4 py-1.5 rounded-full text-xs md:text-sm font-bold tracking-wide uppercase mb-6 shadow-sm">
+        <i data-lucide="alert-triangle" class="w-4 h-4 text-brand-600"></i>
+        <span>Alerta Científico Para Mães</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-extrabold text-slate-900 leading-[1.18] tracking-tight mb-6">
+        O erro de <span class="text-brand-600 underline decoration-rose-300 decoration-wavy underline-offset-4">93% das mães</span>: por que abdominais tradicionais estão destruindo sua barriga 
+        <span class="text-slate-700 block text-2xl sm:text-3xl md:text-3xl mt-2 font-bold">
+          (e o atalho de 5 minutos para fechar a diástase de dentro para fora)
+        </span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-base sm:text-lg md:text-xl text-slate-600 font-normal leading-relaxed max-w-3xl mx-auto mb-8">
+        O estímulo neuromuscular comprovado pela ciência para <strong class="text-slate-800 font-semibold">desinflamar o abdômen</strong>, <strong class="text-slate-800 font-semibold">empinar os glúteos</strong> e <strong class="text-slate-800 font-semibold">resgatar o seu corpo de antes da gravidez</strong> — tudo isso enquanto seu bebê dorme.
+      </p>
+
+      <!-- Video / High-Conversion Visual Mockup -->
+      <div class="relative max-w-2xl mx-auto mb-10 bg-slate-950 rounded-2xl p-2 sm:p-3 shadow-2xl border-4 border-white/80 ring-1 ring-slate-200">
+        <div class="relative aspect-video rounded-xl overflow-hidden bg-slate-900 group">
+          <!-- Background image of mother / baby / wellness -->
+          <img 
+            src="https://images.unsplash.com/photo-1544126592-807ade215a0b?q=80&w=1200&auto=format&fit=crop" 
+            alt="Mãe com bebê e barriga saudável" 
+            class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 ease-out"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent"></div>
+
+          <!-- Fake Play Button Overlay -->
+          <a href="#planos" class="absolute inset-0 flex flex-col items-center justify-center text-white cursor-pointer group-hover:opacity-95 transition-opacity">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 bg-brand-600/90 text-white rounded-full flex items-center justify-center shadow-glow-rose pl-1 hover:scale-110 transition-transform">
+              <i data-lucide="play" class="w-8 h-8 sm:w-10 sm:h-10 fill-current"></i>
+            </div>
+            <span class="mt-3 text-xs sm:text-sm font-semibold tracking-wider uppercase bg-slate-900/80 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20">
+              Vídeo Explicativo: Como Fechar a Diástase em 5 Min/Dia
+            </span>
+          </a>
+
+          <!-- Pill overlay -->
+          <div class="absolute bottom-3 left-3 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-slate-800 text-xs font-bold shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            MANP: Método Ativação Neuromuscular
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero CTA Button -->
+      <div class="flex flex-col items-center justify-center gap-3">
+        <a 
+          href="#planos" 
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-5 bg-accent-emerald hover:bg-accent-emeraldDark text-white text-lg sm:text-xl font-extrabold rounded-2xl shadow-glow-emerald transition-all transform hover:-translate-y-1 active:translate-y-0 text-center uppercase tracking-wide border-b-4 border-emerald-700 animate-pulse-subtle"
+        >
+          <span>QUERO RESGATAR MEU CORPO AGORA POR R$ 34,90</span>
+          <i data-lucide="arrow-right" class="w-6 h-6 stroke-[3]"></i>
+        </a>
+
+        <!-- Trust badges under Hero CTA -->
+        <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-500 pt-2">
+          <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i> Compra 100% Segura</span>
+          <span class="flex items-center gap-1.5"><i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> Acesso Imediato</span>
+          <span class="flex items-center gap-1.5"><i data-lucide="clock" class="w-4 h-4 text-brand-600"></i> Apenas 5 Minutos/Dia</span>
+          <span class="flex items-center gap-1.5"><i data-lucide="award" class="w-4 h-4 text-purple-600"></i> Garantia de 7 Dias</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 3. DORES (AGITATION SECTION) -->
+  <section class="py-16 md:py-24 bg-white relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <!-- Section Title -->
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <span class="text-brand-600 font-bold uppercase tracking-widest text-xs sm:text-sm">Identificação & Verdade</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-4 tracking-tight">
+          O espelho virou o seu <span class="text-brand-600 underline decoration-rose-300">pior inimigo?</span>
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Se você foi mãe recentemente ou há anos, provavelmente reconhece a dor silenciosa de não se reconhecer mais no próprio reflexo:
+        </p>
+      </div>
+
+      <!-- Pain Grid -->
+      <div class="grid gap-4 sm:gap-6 md:grid-cols-2">
+
+        <!-- Pain 1 -->
+        <div class="card-pain bg-rose-50/60 border border-rose-100 rounded-2xl p-6 flex items-start gap-4">
+          <div class="p-3 bg-rose-100 text-brand-600 rounded-xl shrink-0 mt-0.5">
+            <i data-lucide="lock" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-900 text-lg mb-1">A calça jeans que trava na dobra</h3>
+            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+              Você tenta vestir aquela calça jeans antiga que tanto amava, mas ela <strong>trava na dobra da barriga</strong> e aperta de um jeito humilhante.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pain 2 -->
+        <div class="card-pain bg-rose-50/60 border border-rose-100 rounded-2xl p-6 flex items-start gap-4">
+          <div class="p-3 bg-rose-100 text-brand-600 rounded-xl shrink-0 mt-0.5">
+            <i data-lucide="waves" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Pele flácida de "gelatina murcha"</h3>
+            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+              Sente a pele flácida balançando, com aquele aspecto incômodo de <strong>"gelatina murcha"</strong> só de caminhar pela casa ou subir uma escada.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pain 3 -->
+        <div class="card-pain bg-rose-50/60 border border-rose-100 rounded-2xl p-6 flex items-start gap-4">
+          <div class="p-3 bg-rose-100 text-brand-600 rounded-xl shrink-0 mt-0.5">
+            <i data-lucide="user-x" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-900 text-lg mb-1">A sensação de corpo confiscado</h3>
+            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+              Tem a sensação angustiante de que o seu corpo foi <strong>confiscado pela maternidade</strong> e nunca mais vai voltar a ser o que era antes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pain 4 -->
+        <div class="card-pain bg-rose-50/60 border border-rose-100 rounded-2xl p-6 flex items-start gap-4">
+          <div class="p-3 bg-rose-100 text-brand-600 rounded-xl shrink-0 mt-0.5">
+            <i data-lucide="cloud-rain" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Choro escondido no chuveiro</h3>
+            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+              Chora escondida no chuveiro por ver a <strong>barriga estufada de grávida de 5 meses</strong> que não some, não importa o quanto feche a boca.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- High-Impact Single Pain Card (Fear of expensive surgery) -->
+      <div class="mt-6 card-pain bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-xl flex flex-col sm:flex-row items-center gap-6">
+        <div class="w-16 h-16 rounded-2xl bg-brand-600/20 border border-brand-500/40 text-brand-400 flex items-center justify-center shrink-0">
+          <i data-lucide="banknote" class="w-8 h-8"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-white mb-2">Medo de gastar uma fortuna em cirurgias de risco</h3>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Morre de medo de ter que gastar o preço de um aluguel (ou de um carro popular) em <strong>cirurgias invasivas como abdominoplastia</strong> ou tratamentos estéticos caros que <em>não garantem resultado</em> e ainda têm pós-operatório doloroso.
+          </p>
+        </div>
+      </div>
+
+      <!-- Empathy callout box -->
+      <div class="mt-12 text-center p-6 bg-amber-50/80 border border-amber-200 rounded-2xl max-w-2xl mx-auto">
+        <p class="text-amber-900 font-medium text-sm sm:text-base">
+          💡 <strong class="font-bold">A culpa NÃO é sua.</strong> O que você tem não é gordura localizada, é <strong>diástase abdominal e inflamação neuromuscular</strong>. E fazer abdominais comuns só empurra suas vísceras para fora e piora o buraco.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. MECANISMO CIENTÍFICO (MANP - POR QUE FUNCIONA) -->
+  <section class="py-16 md:py-20 bg-slate-900 text-white relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-brand-400 font-bold uppercase tracking-widest text-xs sm:text-sm">O Atalho Comprovado Pela Ciência</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-2 text-white">
+          Como o <span class="text-rose-400">MANP</span> fecha a diástase em 5 minutos diários?
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base mt-3">
+          Mecanismo de Ativação Neuromuscular Pós-Parto: a biomecânica que reconecta a linha alba sem cirurgia.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Step 1 -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 text-center">
+          <div class="w-12 h-12 bg-rose-500/20 text-rose-400 rounded-xl flex items-center justify-center mx-auto mb-4 font-black text-lg">
+            1
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-white">Desinflamação Imediata</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Drena o líquido retido entre as fáscias musculares e alivia a pressão intra-abdominal logo nos primeiros 7 dias.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 text-center">
+          <div class="w-12 h-12 bg-rose-500/20 text-rose-400 rounded-xl flex items-center justify-center mx-auto mb-4 font-black text-lg">
+            2
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-white">Reestruturação Profunda</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Ativa o músculo transverso (o seu espartilho natural), "costurando" os retos abdominais sem empurrar o assoalho pélvico.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 text-center">
+          <div class="w-12 h-12 bg-rose-500/20 text-rose-400 rounded-xl flex items-center justify-center mx-auto mb-4 font-black text-lg">
+            3
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-white">Reativação de Glúteos</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Corrige a báscula pélvica da gravidez, empinando o bumbum caído e sustentando a coluna lombar sem dores.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. O QUE VOCÊ VAI RECEBER -->
+  <section class="py-16 md:py-24 bg-rose-50/40 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <!-- Header -->
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <span class="text-brand-600 font-bold uppercase tracking-widest text-xs sm:text-sm">Conteúdo Completo</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-4 tracking-tight">
+          O Que Você Vai Receber
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Tudo o que você precisa para recuperar sua autoestima em um só lugar:
+        </p>
+      </div>
+
+      <!-- Stack Cards -->
+      <div class="space-y-4 sm:space-y-6">
+
+        <!-- Card 1: Core Protocol -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border-2 border-brand-200/80 shadow-md hover:shadow-xl transition-shadow flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center shrink-0">
+            <i data-lucide="sparkles" class="w-7 h-7"></i>
+          </div>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="text-xs font-bold uppercase bg-brand-100 text-brand-700 px-2.5 py-0.5 rounded-full">Base do Método</span>
+              <span class="text-xs font-bold text-emerald-600 flex items-center gap-1"><i data-lucide="infinity" class="w-3.5 h-3.5"></i> Acesso Vitalício</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Protocolo Mães Firmes</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Acesso vitalício às vídeo-aulas práticas de <strong>5 minutos diários</strong> baseadas no Mecanismo de Ativação Neuromuscular Pós-Parto. Direto ao ponto, sem enrolação.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Desinflamação -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+            <i data-lucide="flame" class="w-7 h-7"></i>
+          </div>
+          <div class="flex-1">
+            <span class="text-xs font-bold uppercase bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded-full inline-block mb-1">Módulo 1</span>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Módulo Desinflamação Imediata</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              A rotina exata para <strong>eliminar o aspecto de inchaço constante na primeira semana</strong>, liberando toxinas retidas e diminuindo centímetros de cintura rapidamente.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Reestruturação -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="w-14 h-14 rounded-2xl bg-rose-100 text-brand-600 flex items-center justify-center shrink-0">
+            <i data-lucide="layers" class="w-7 h-7"></i>
+          </div>
+          <div class="flex-1">
+            <span class="text-xs font-bold uppercase bg-rose-100 text-brand-700 px-2.5 py-0.5 rounded-full inline-block mb-1">Módulo 2</span>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Módulo Reestruturação de Diástase</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Estímulos cirúrgicos que <strong>unem os músculos afastados</strong> sem forçar o assoalho pélvico e sem criar pressão contrária sobre os seus órgãos internos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4: Reativação de Glúteos -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
+            <i data-lucide="trending-up" class="w-7 h-7"></i>
+          </div>
+          <div class="flex-1">
+            <span class="text-xs font-bold uppercase bg-purple-100 text-purple-700 px-2.5 py-0.5 rounded-full inline-block mb-1">Módulo 3</span>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Módulo Reativação de Glúteos</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              O segredo neuromuscular para <strong>empinar e devolver a firmeza do bumbum</strong>, combatendo o "glúteo caído" comum após a alteração postural do parto.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 5: Acesso pelo Celular -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+            <i data-lucide="smartphone" class="w-7 h-7"></i>
+          </div>
+          <div class="flex-1">
+            <span class="text-xs font-bold uppercase bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full inline-block mb-1">Praticidade Máxima</span>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Acesso pelo Celular</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Assista de onde estiver, a qualquer hora do dia ou da noite, <strong>pausando quando o bebê precisar de você</strong> e retomando exatamente de onde parou.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick CTA mid-page -->
+      <div class="text-center mt-12">
+        <a 
+          href="#planos" 
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-glow-rose transition-all text-base sm:text-lg uppercase"
+        >
+          <span>Quero Começar Meus 5 Minutos Hoje</span>
+          <i data-lucide="arrow-down" class="w-5 h-5"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. PARA QUEM É -->
+  <section class="py-16 md:py-24 bg-white relative border-y border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <span class="text-brand-600 font-bold uppercase tracking-widest text-xs sm:text-sm">Diagnóstico Pessoal</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-4 tracking-tight">
+          Para Quem É Este Protocolo?
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Veja se você se encaixa em algum destes perfis:
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+
+        <div class="p-6 rounded-2xl bg-emerald-50/70 border border-emerald-200 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5 font-bold shadow-sm">
+            <i data-lucide="check" class="w-5 h-5 stroke-[3]"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-base sm:text-lg mb-1">Mães Recentes</h4>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Mulheres no pós-parto que querem <strong>recuperar o corpo com segurança</strong>, sem passar horas na academia e sem colocar a amamentação em risco.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-emerald-50/70 border border-emerald-200 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5 font-bold shadow-sm">
+            <i data-lucide="check" class="w-5 h-5 stroke-[3]"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-base sm:text-lg mb-1">Mães de Filhos Mais Velhos</h4>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Mulheres que convivem com a <strong>diástase há 2, 5 ou até 10 anos</strong> e achavam que o único caminho restante seria uma cirurgia plástica.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-emerald-50/70 border border-emerald-200 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5 font-bold shadow-sm">
+            <i data-lucide="check" class="w-5 h-5 stroke-[3]"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-base sm:text-lg mb-1">Mulheres Sem Tempo e Cansadas</h4>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Mães que dormem mal, cuidam da casa, trabalham e <strong>precisam de um método que funcione em apenas 5 minutos</strong> diários no quarto.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-emerald-50/70 border border-emerald-200 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5 font-bold shadow-sm">
+            <i data-lucide="check" class="w-5 h-5 stroke-[3]"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-base sm:text-lg mb-1">Traumatizadas com o YouTube</h4>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Mulheres que já tentaram dietas radicais e exercícios aleatórios da internet, mas <strong>só pioraram o estufamento</strong> da barriga.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. PROVAS SOCIAIS / ANTES E DEPOIS -->
+  <section class="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <span class="text-brand-600 font-bold uppercase tracking-widest text-xs sm:text-sm">Resultados Reais</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-4 tracking-tight">
+          O Que Acontece Quando Você Aplica o Método
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Veja a transformação de mães reais que saíram da frustração e resgataram a feminilidade:
+        </p>
+      </div>
+
+      <!-- Testimonial Cards with Before/After Mockups -->
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+
+        <!-- Depoimento 1: Camila -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-lg flex flex-col justify-between">
+          <div>
+            <!-- Before / After Visual Badge -->
+            <div class="relative rounded-2xl overflow-hidden mb-6 border border-slate-200 aspect-[16/10] bg-slate-100 flex items-center justify-center">
+              <img 
+                src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800&auto=format&fit=crop" 
+                alt="Resultado Diástase Camila" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute top-3 left-3 bg-red-600/90 text-white text-[11px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider">
+                Antes: Diástase 4 dedos
+              </div>
+              <div class="absolute bottom-3 right-3 bg-emerald-600/95 text-white text-[11px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider shadow">
+                Depois: Abdômen Firme
+              </div>
+            </div>
+
+            <!-- Stars -->
+            <div class="flex text-amber-400 gap-1 mb-3">
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+
+            <!-- Quote -->
+            <blockquote class="text-slate-700 text-sm sm:text-base leading-relaxed italic mb-6">
+              "Eu achava que por ser mãe de gêmeos e não ter tempo nem para respirar, nunca mais ia recuperar meu corpo. O método é tão prático que eu faço enquanto o bebê dorme rapidinho. A minha diástase fechou quase toda e minha autoestima voltou 100%."
+            </blockquote>
+          </div>
+
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+            <div class="w-11 h-11 rounded-full bg-rose-200 text-brand-700 font-bold flex items-center justify-center shrink-0">
+              C
+            </div>
+            <div>
+              <div class="font-bold text-slate-900 text-sm sm:text-base">Camila, 32 anos</div>
+              <div class="text-slate-500 text-xs">Mãe de gêmeos • Diástase reabilitada</div>
+            </div>
+            <span class="ml-auto text-emerald-600 text-xs font-semibold flex items-center gap-1">
+              <i data-lucide="badge-check" class="w-4 h-4"></i> Verificada
+            </span>
+          </div>
+        </div>
+
+        <!-- Depoimento 2: Mariana -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-lg flex flex-col justify-between">
+          <div>
+            <!-- Before / After Visual Badge -->
+            <div class="relative rounded-2xl overflow-hidden mb-6 border border-slate-200 aspect-[16/10] bg-slate-100 flex items-center justify-center">
+              <img 
+                src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=800&auto=format&fit=crop" 
+                alt="Resultado Mariana Calça Jeans" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute top-3 left-3 bg-red-600/90 text-white text-[11px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider">
+                Antes: Barriga Estufada
+              </div>
+              <div class="absolute bottom-3 right-3 bg-emerald-600/95 text-white text-[11px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider shadow">
+                Depois: Calça Jeans Fechou!
+              </div>
+            </div>
+
+            <!-- Stars -->
+            <div class="flex text-amber-400 gap-1 mb-3">
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+
+            <!-- Quote -->
+            <blockquote class="text-slate-700 text-sm sm:text-base leading-relaxed italic mb-6">
+              "Depois de dois filhos, eu tinha uma diástase enorme. Achava que minha barriga ia ficar estufada para sempre. Com poucos dias aplicando o MANP, a inflamação sumiu de um jeito que eu voltei a entrar na calça jeans que estava guardada há 4 anos!"
+            </blockquote>
+          </div>
+
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+            <div class="w-11 h-11 rounded-full bg-rose-200 text-brand-700 font-bold flex items-center justify-center shrink-0">
+              M
+            </div>
+            <div>
+              <div class="font-bold text-slate-900 text-sm sm:text-base">Mariana, 28 anos</div>
+              <div class="text-slate-500 text-xs">Mãe de dois filhos • 4 anos de diástase vencida</div>
+            </div>
+            <span class="ml-auto text-emerald-600 text-xs font-semibold flex items-center gap-1">
+              <i data-lucide="badge-check" class="w-4 h-4"></i> Verificada
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. BÔNUS EXCLUSIVOS -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-white via-rose-50/50 to-white relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <span class="text-brand-600 font-bold uppercase tracking-widest text-xs sm:text-sm">Presentes Especiais</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-4 tracking-tight">
+          Bônus Exclusivos de Lançamento
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Ao garantir sua vaga hoje, você desbloqueia 2 materiais complementares essenciais:
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Bônus 1 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-brand-200 shadow-md relative overflow-hidden flex flex-col justify-between">
+          <div class="absolute -right-12 -top-12 w-32 h-32 bg-rose-100 rounded-full blur-2xl"></div>
+          <div>
+            <div class="inline-flex items-center gap-1.5 bg-brand-100 text-brand-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
+              <i data-lucide="gift" class="w-4 h-4"></i> Bônus 1
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+              O Guia de Sobrevivência do Assoalho Pélvico
+            </h3>
+            
+            <div class="space-y-3 mb-6 text-sm sm:text-base">
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="shield" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
+                <p class="text-slate-700">
+                  <strong class="text-slate-900">Benefício:</strong> Evite escapes de xixi ao tossir/espirrar e combata a flacidez íntima pós-parto.
+                </p>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="alert-circle" class="w-5 h-5 text-brand-600 shrink-0 mt-0.5"></i>
+                <p class="text-slate-700">
+                  <strong class="text-slate-900">Motivo:</strong> Exercícios errados destroem sua região pélvica. Este guia blinda seu corpo contra esses erros fatais.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-500 uppercase font-semibold">Valor Individual: <span class="line-through">R$ 97,00</span></span>
+            <span class="text-sm font-black text-brand-600 uppercase bg-rose-50 px-2.5 py-1 rounded-lg">GRÁTIS NO PREMIUM</span>
+          </div>
+        </div>
+
+        <!-- Bônus 2 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-amber-200 shadow-md relative overflow-hidden flex flex-col justify-between">
+          <div class="absolute -right-12 -top-12 w-32 h-32 bg-amber-100 rounded-full blur-2xl"></div>
+          <div>
+            <div class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
+              <i data-lucide="headphones" class="w-4 h-4"></i> Bônus 2
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+              Acelerador de Metabolismo Pós-Parto (Áudio)
+            </h3>
+            
+            <div class="space-y-3 mb-6 text-sm sm:text-base">
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="zap" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+                <p class="text-slate-700">
+                  <strong class="text-slate-900">Benefício:</strong> Queime calorias no piloto automático sem dietas restritivas ou passar fome.
+                </p>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="activity" class="w-5 h-5 text-brand-600 shrink-0 mt-0.5"></i>
+                <p class="text-slate-700">
+                  <strong class="text-slate-900">Motivo:</strong> Seu corpo precisa de uma reprogramação hormonal simples que ativa a queima enquanto você descansa.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-500 uppercase font-semibold">Valor Individual: <span class="line-through">R$ 67,00</span></span>
+            <span class="text-sm font-black text-amber-600 uppercase bg-amber-50 px-2.5 py-1 rounded-lg">GRÁTIS NO PREMIUM</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 9. TABELA DE PLANOS (PRICING) -->
+  <section id="planos" class="py-16 md:py-24 bg-slate-900 text-white relative overflow-hidden">
+    <!-- Glow effects -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-brand-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <span class="text-brand-400 font-bold uppercase tracking-widest text-xs sm:text-sm">Escolha Sua Transformação</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-2 mb-4 tracking-tight">
+          Qual Plano é Ideal Para Você?
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg">
+          Acesso vitalício imediato com garantia incondicional de 7 dias:
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-stretch">
+
+        <!-- PLANO PRINCIPAL -->
+        <div class="bg-slate-800/90 border border-slate-700 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-600 transition-all">
+          <div>
+            <div class="mb-4">
+              <span class="text-xs font-bold uppercase bg-slate-700 text-slate-300 px-3 py-1 rounded-full">Oferta Única</span>
+              <h3 class="text-2xl font-bold text-white mt-2">Plano Principal</h3>
+              <p class="text-slate-400 text-sm mt-1">O essencial para fechar a diástase em casa.</p>
+            </div>
+
+            <div class="my-6 py-4 border-y border-slate-700/80">
+              <div class="text-xs text-slate-400 line-through">De R$ 197,00 por apenas</div>
+              <div class="flex items-baseline gap-1 mt-1">
+                <span class="text-sm font-medium text-slate-300">R$</span>
+                <span class="text-4xl sm:text-5xl font-black text-white">34,90</span>
+                <span class="text-xs text-slate-400">à vista</span>
+              </div>
+              <div class="text-xs text-emerald-400 mt-1 font-medium">ou até 4x de R$ 9,35</div>
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-3 text-sm text-slate-300 mb-8">
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span>Acesso Completo ao Protocolo Mães Firmes</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span>Módulo de Desinflamação Imediata</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span>Módulo de Fechamento de Diástase</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span>Acesso pelo Celular, Tablet e Computador</span>
+              </li>
+              <li class="flex items-center gap-2.5 text-slate-500 line-through">
+                <i data-lucide="x" class="w-4 h-4 text-slate-600 shrink-0"></i>
+                <span>Guia do Assoalho Pélvico</span>
+              </li>
+              <li class="flex items-center gap-2.5 text-slate-500 line-through">
+                <i data-lucide="x" class="w-4 h-4 text-slate-600 shrink-0"></i>
+                <span>Acelerador de Metabolismo em Áudio</span>
+              </li>
+            </ul>
+          </div>
+
+          <a 
+            href="#checkout-basico" 
+            id="btn-checkout-basico"
+            class="w-full text-center py-4 px-6 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-xl transition-all block text-base uppercase"
+          >
+            Quero o Plano Básico (R$ 34,90)
+          </a>
+        </div>
+
+        <!-- PLANO PREMIUM (RECOMENDADO) -->
+        <div class="bg-gradient-to-b from-slate-800 to-slate-850 border-2 border-brand-500 rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative shadow-glow-rose">
+          
+          <!-- Badge Recomendo -->
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-brand-600 text-white text-xs font-black uppercase px-4 py-1 rounded-full shadow-md tracking-wider">
+            ⭐ RECOMENDADO • MAIS ESCOLHIDO
+          </div>
+
+          <div>
+            <div class="mb-4">
+              <span class="text-xs font-bold uppercase bg-brand-900/80 text-brand-300 px-3 py-1 rounded-full">Experiência Completa</span>
+              <h3 class="text-2xl font-bold text-white mt-2">Plano Premium</h3>
+              <p class="text-slate-300 text-sm mt-1">A solução definitiva com todos os bônus inclusos.</p>
+            </div>
+
+            <div class="my-6 py-4 border-y border-slate-700/80">
+              <div class="text-xs text-slate-400 line-through">De R$ 397,00 por apenas</div>
+              <div class="flex items-baseline gap-1 mt-1">
+                <span class="text-sm font-medium text-slate-300">R$</span>
+                <span class="text-4xl sm:text-5xl font-black text-white">47,90</span>
+                <span class="text-xs text-slate-400">à vista</span>
+              </div>
+              <div class="text-xs text-emerald-400 mt-1 font-semibold">
+                (Adicione com 1 clique no checkout por apenas R$ 13 a mais)
+              </div>
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-3 text-sm text-slate-200 mb-8">
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+                <span class="font-medium text-white">Acesso Completo ao Protocolo Mães Firmes</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+                <span class="font-medium text-white">Todos os Módulos Práticos (Diástase + Desinflamação)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+                <span class="font-medium text-white">Módulo Especial Reativação de Glúteos</span>
+              </li>
+              <li class="flex items-center gap-2.5 bg-brand-900/40 p-2 rounded-lg border border-brand-700/50">
+                <i data-lucide="gift" class="w-5 h-5 text-amber-400 shrink-0"></i>
+                <span class="font-bold text-amber-200">+ Bônus 1: Guia do Assoalho Pélvico</span>
+              </li>
+              <li class="flex items-center gap-2.5 bg-brand-900/40 p-2 rounded-lg border border-brand-700/50">
+                <i data-lucide="headphones" class="w-5 h-5 text-amber-400 shrink-0"></i>
+                <span class="font-bold text-amber-200">+ Bônus 2: Acelerador de Metabolismo (Áudio)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+                <span>Garantia Estendida Blindada de 7 Dias</span>
+              </li>
+            </ul>
+          </div>
+
+          <a 
+            href="#checkout-premium" 
+            id="btn-checkout-premium"
+            class="w-full text-center py-5 px-6 bg-accent-emerald hover:bg-accent-emeraldDark text-white font-extrabold rounded-xl shadow-glow-emerald transition-all block text-base sm:text-lg uppercase tracking-wide border-b-4 border-emerald-700 animate-pulse-subtle"
+          >
+            Quero o Plano Premium (R$ 47,90)
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Secure Checkout Reminder -->
+      <div class="mt-12 text-center text-xs text-slate-400 flex flex-wrap items-center justify-center gap-6">
+        <span class="flex items-center gap-1.5"><i data-lucide="lock" class="w-4 h-4 text-emerald-400"></i> Pagamento Criptografado 256-Bit</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="smartphone" class="w-4 h-4 text-brand-400"></i> Liberação Imediata no E-mail</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-purple-400"></i> 7 Dias de Garantia Incondicional</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. GARANTIA BLINDADA DE 7 DIAS -->
+  <section class="py-16 md:py-24 bg-white relative">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+      <div class="bg-gradient-to-br from-rose-50 via-white to-amber-50 rounded-3xl p-8 sm:p-12 border-2 border-rose-200/80 shadow-xl text-center relative overflow-hidden">
+        
+        <!-- Seal Icon -->
+        <div class="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-white shadow-lg ring-8 ring-amber-100">
+          <i data-lucide="award" class="w-12 h-12 stroke-[2.5]"></i>
+        </div>
+
+        <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-brand-600 bg-rose-100 px-3 py-1 rounded-full">
+          Garantia Blindada de Satisfação
+        </span>
+
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-4 mb-4 tracking-tight">
+          Risco Zero. Garantia Blindada de 7 Dias.
+        </h2>
+
+        <p class="text-slate-600 text-base sm:text-lg leading-relaxed mb-6">
+          Você tem <strong>7 dias inteiros</strong> para testar o protocolo Mães Firmes em casa. Se você não sentir a sua barriga desinchando, ou se achar que os exercícios de 5 minutos não se encaixam na sua rotina corrida, basta enviar um único e-mail.
+        </p>
+
+        <p class="text-slate-900 font-bold text-lg sm:text-xl">
+          Devolvemos 100% do seu dinheiro. Sem perguntas. Sem burocracia.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 11. FAQ (PERGUNTAS FREQUENTES) -->
+  <section class="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-brand-600 font-bold uppercase tracking-widest text-xs sm:text-sm">Tire Suas Dúvidas</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-4 tracking-tight">
+          Perguntas Frequentes
+        </h2>
+        <p class="text-slate-600 text-base">
+          Tudo o que você precisa saber antes de iniciar sua recuperação:
+        </p>
+      </div>
+
+      <!-- Accordions -->
+      <div class="space-y-3" id="faq-container">
+
+        <!-- FAQ 1 -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+          <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+            <span class="text-base sm:text-lg">Eu tive filho há 5 anos, ainda funciona para mim?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 shrink-0 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content px-6 pb-5 pt-1 text-slate-600 text-sm sm:text-base leading-relaxed hidden">
+            <p><strong>Sim.</strong> O Mecanismo Neuromuscular reativa o tecido celular independente de quanto tempo faz que você deu à luz. A diástase pode ser tratada anos depois porque o músculo transverso nunca perde a capacidade de ser recondicionado.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+          <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+            <span class="text-base sm:text-lg">Eu não tenho tempo, durmo mal e cuido da casa. Vou conseguir fazer?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 shrink-0 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content px-6 pb-5 pt-1 text-slate-600 text-sm sm:text-base leading-relaxed hidden">
+            <p>O método foi desenhado <strong>exatamente para a realidade caótica da maternidade</strong>. Você só precisa de <strong>5 a 10 minutos por dia</strong>, no conforto do seu quarto ou até em cima do tapete enquanto seu filho brinca ou dorme uma soneca.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+          <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+            <span class="text-base sm:text-lg">Preciso comprar algum equipamento caro?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 shrink-0 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content px-6 pb-5 pt-1 text-slate-600 text-sm sm:text-base leading-relaxed hidden">
+            <p><strong>Não.</strong> Você vai usar apenas o peso do seu próprio corpo e a força da biomecânica natural para colar seus músculos de volta. Nenhum acessório ou faixa cara é necessária.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+          <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+            <span class="text-base sm:text-lg">Isso não é mais uma daquelas dietas malucas?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 shrink-0 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content px-6 pb-5 pt-1 text-slate-600 text-sm sm:text-base leading-relaxed hidden">
+            <p><strong>De jeito nenhum.</strong> O problema da diástase é estrutural e inflamatório, não se resolve fechando a boca. Você <strong>não precisará cortar seus alimentos favoritos</strong> e nem fazer restrições que prejudiquem sua energia ou leite.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+          <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-slate-900 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+            <span class="text-base sm:text-lg">Como vou receber o acesso?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 shrink-0 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content px-6 pb-5 pt-1 text-slate-600 text-sm sm:text-base leading-relaxed hidden">
+            <p>Assim que o seu pagamento de <strong>R$ 34,90</strong> for confirmado pelo sistema, você receberá um e-mail com seu login e senha imediatos para acessar tudo pelo celular, tablet ou computador na nossa área de membros exclusiva.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 12. CTA FINAL & URGÊNCIA -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-brand-950 via-slate-950 to-black text-white relative text-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+      <!-- Urgent Alert Badge -->
+      <div class="inline-flex items-center gap-2 bg-red-500/20 border border-red-500/40 text-red-300 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider mb-6">
+        <i data-lucide="alert-octagon" class="w-4 h-4 text-red-400"></i>
+        <span>Atenção: Oferta Por Tempo Limitado</span>
+      </div>
+
+      <!-- Warning Title -->
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+        Não Deixe o Seu Corpo Para Depois
+      </h2>
+
+      <!-- Hard Copy from Prompt -->
+      <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+        As clínicas de luxo e a grande mídia faturam alto mantendo você frustrada com o próprio corpo. A cada dia que você adia, o afastamento muscular se consolida e a inflamação se agrava. Você está a um clique de distância de recuperar a mulher confiante que existe dentro de você. Clique no botão abaixo agora, antes que esta página sofra derrubada judicial e o valor volte para R$ 500.
+      </p>
+
+      <!-- Final CTA Button -->
+      <div class="flex flex-col items-center justify-center gap-4">
+        <a 
+          href="#planos" 
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 bg-accent-emerald hover:bg-accent-emeraldDark text-white text-lg sm:text-xl font-black rounded-2xl shadow-glow-emerald transition-all transform hover:-translate-y-1 active:translate-y-0 text-center uppercase tracking-wide border-b-4 border-emerald-700 animate-pulse-subtle"
+        >
+          <span>QUERO RESGATAR MEU CORPO AGORA POR R$ 34,90</span>
+          <i data-lucide="arrow-right" class="w-6 h-6 stroke-[3]"></i>
+        </a>
+
+        <!-- Payment icons & security -->
+        <div class="flex items-center justify-center gap-4 pt-3 text-xs text-slate-400">
+          <span class="flex items-center gap-1"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Pix Imediato</span>
+          <span class="flex items-center gap-1"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Cartão em até 4x</span>
+          <span class="flex items-center gap-1"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Boleto Bancário</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 13. FOOTER -->
+  <footer class="bg-black text-slate-500 py-12 text-xs border-t border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-4">
+      <div class="flex flex-wrap justify-center gap-6 text-slate-400 font-medium">
+        <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+        <a href="#" class="hover:text-white transition-colors">Políticas de Privacidade</a>
+        <a href="#" class="hover:text-white transition-colors">Contato de Suporte</a>
+      </div>
+
+      <p class="max-w-2xl mx-auto text-slate-500 leading-relaxed">
+        <strong>Aviso Legal:</strong> Este produto não substitui o parecer médico profissional. Sempre consulte seu médico ou ginecologista obstetra para tratar de assuntos relativos à sua saúde no puerpério. Os resultados podem variar de pessoa para pessoa.
+      </p>
+
+      <p class="text-slate-600">
+        © 2026 Protocolo Mães Firmes. Todos os direitos reservados. CNPJ sob consulta.
+      </p>
+    </div>
+  </footer>
+
+  <!-- 14. STICKY MOBILE BOTTOM BAR (Shows when scrolling down) -->
+  <div id="sticky-bar" class="fixed bottom-0 left-0 right-0 p-3 bg-white/95 backdrop-blur-md border-t border-rose-200 z-50 shadow-2xl transition-all duration-300 translate-y-full md:hidden">
+    <div class="flex items-center justify-between gap-3">
+      <div>
+        <div class="text-[11px] font-bold text-slate-500 uppercase">Oferta Relâmpago</div>
+        <div class="text-sm font-black text-brand-600">R$ 34,90 <span class="text-[10px] text-slate-400 font-normal">à vista</span></div>
+      </div>
+      <a 
+        href="#planos" 
+        class="flex-1 py-3 px-4 bg-accent-emerald text-white text-center font-extrabold text-xs uppercase rounded-xl shadow-glow-emerald tracking-wide"
+      >
+        QUERO MEU CORPO AGORA
+      </a>
+    </div>
+  </div>
+
+  <!-- 15. SOCIAL PROOF LIVE TOAST -->
+  <div id="social-toast" class="fixed bottom-5 left-5 z-40 bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl p-3.5 shadow-xl flex items-center gap-3 transition-all duration-500 opacity-0 translate-y-4 pointer-events-none max-w-xs">
+    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm shrink-0">
+      <i data-lucide="check" class="w-5 h-5"></i>
+    </div>
+    <div class="text-xs">
+      <p class="font-bold text-slate-900" id="toast-name">Juliana M. de São Paulo</p>
+      <p class="text-slate-500 text-[11px]" id="toast-action">acabou de garantir o Plano Premium</p>
+      <span class="text-[10px] text-emerald-600 font-medium">há 2 minutos</span>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    // =========================================================================
+    // CONFIGURAÇÃO DOS LINKS DE CHECKOUT (KIWIFY, HOTMART, EDUZZ, BRAIP, ETC.)
+    // Substitua os links abaixo pelos seus links reais de checkout:
+    // =========================================================================
+    const CHECKOUT_CONFIG = {
+      basico: "https://pay.kiwify.com.br/SEU_LINK_34",   // Plano R$ 34,90
+      premium: "https://pay.kiwify.com.br/SEU_LINK_47"   // Plano R$ 47,90
+    };
+
+    // Vincular cliques dos botões de compra
+    const btnBasico = document.getElementById('btn-checkout-basico');
+    const btnPremium = document.getElementById('btn-checkout-premium');
+
+    if (btnBasico) {
+      btnBasico.addEventListener('click', (e) => {
+        if (!CHECKOUT_CONFIG.basico.includes('SEU_LINK')) {
+          btnBasico.href = CHECKOUT_CONFIG.basico;
+        } else {
+          e.preventDefault();
+          alert('Configuração rápida: Altere a constante CHECKOUT_CONFIG no script do index.html para inserir o seu link de checkout da Kiwify ou Hotmart!');
+        }
+      });
+    }
+
+    if (btnPremium) {
+      btnPremium.addEventListener('click', (e) => {
+        if (!CHECKOUT_CONFIG.premium.includes('SEU_LINK')) {
+          btnPremium.href = CHECKOUT_CONFIG.premium;
+        } else {
+          e.preventDefault();
+          alert('Configuração rápida: Altere a constante CHECKOUT_CONFIG no script do index.html para inserir o seu link de checkout da Kiwify ou Hotmart!');
+        }
+      });
+    }
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-toggle').forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('i');
+        const isOpen = !content.classList.contains('hidden');
+
+        // Close all
+        document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+        document.querySelectorAll('.faq-toggle i').forEach(i => i.classList.remove('rotate-180'));
+
+        if (!isOpen) {
+          content.classList.remove('hidden');
+          if (icon) icon.classList.add('rotate-180');
+        }
+      });
+    });
+
+    // Top Countdown Timer (14:59)
+    let timeLeft = 14 * 60 + 59;
+    const timerElement = document.getElementById('top-countdown');
+    if (timerElement) {
+      setInterval(() => {
+        if (timeLeft <= 0) timeLeft = 15 * 60;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        timeLeft--;
+      }, 1000);
+    }
+
+    // Sticky Mobile Bottom Bar Logic
+    const stickyBar = document.getElementById('sticky-bar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 450) {
+        stickyBar.classList.remove('translate-y-full');
+      } else {
+        stickyBar.classList.add('translate-y-full');
+      }
+    });
+
+    // Social Proof Toast Notification Simulator
+    const fakeSales = [
+      { name: "Juliana M. (São Paulo)", action: "garantiu o Plano Premium" },
+      { name: "Renata F. (Belo Horizonte)", action: "adquiriu o Protocolo Mães Firmes" },
+      { name: "Patrícia S. (Curitiba)", action: "garantiu o Plano Premium" },
+      { name: "Larissa C. (Rio de Janeiro)", action: "adquiriu o Protocolo Mães Firmes" },
+      { name: "Fernanda B. (Porto Alegre)", action: "garantiu o Plano Premium" }
+    ];
+    let toastIndex = 0;
+    const toast = document.getElementById('social-toast');
+    const toastName = document.getElementById('toast-name');
+    const toastAction = document.getElementById('toast-action');
+
+    function showRandomToast() {
+      if (!toast) return;
+      const sale = fakeSales[toastIndex % fakeSales.length];
+      toastName.textContent = sale.name;
+      toastAction.textContent = sale.action;
+      toast.classList.remove('opacity-0', 'translate-y-4');
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-4');
+      }, 4500);
+
+      toastIndex++;
+    }
+
+    // Trigger toast after 4s, then every 16s
+    setTimeout(() => {
+      showRandomToast();
+      setInterval(showRandomToast, 16000);
+    }, 4000);
+  </script>
+</body>
+</html>
