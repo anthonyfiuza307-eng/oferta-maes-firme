@@ -351,12 +351,7 @@ function FacebookVSL() {
           <svg height="28" viewBox="0 0 60 60" fill="#0866FF" className="sm:h-8">
             <path d="M55.44 0H4.56C2.04 0 0 2.04 0 4.56v50.88C0 57.96 2.04 60 4.56 60h27.36V36.84H24.3v-9.12h7.62v-6.72c0-7.56 4.62-11.7 11.4-11.7 3.24 0 6.6.24 9.84.72v7.8h-6.72c-3.6 0-4.32 1.74-4.32 4.26v5.64h8.64l-1.14 9.12H42.12V60h13.32C57.96 60 60 57.96 60 55.44V4.56C60 2.04 57.96 0 55.44 0z"/>
           </svg>
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-[#F0F2F5] flex items-center justify-center cursor-pointer hover:bg-[#E4E6EB]">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#050505"><circle cx="11" cy="11" r="8"/><path stroke="white" strokeWidth="2" strokeLinecap="round" d="M21 21l-4.35-4.35"/></svg>
-            </div>
-            <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" size={26} alt="Perfil"/>
-          </div>
+
         </div>
       </header>
 
@@ -558,15 +553,7 @@ function FacebookVSL() {
           {/* ── SEÇÃO DE COMENTÁRIOS ── */}
           <div className="px-4 py-3 space-y-4">
 
-            {/* Campo de comentário do usuário */}
-            <div className="flex items-center gap-2">
-              <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" size={32} alt="Você"/>
-              <div className="flex-1 bg-[#F0F2F5] rounded-full px-4 py-2 text-[13px] text-[#65676B] cursor-text hover:bg-[#E4E6EB] transition-colors">
-                Escreva um comentário público…
-              </div>
-            </div>
 
-            {/* Comentário 1: Camila Ribeiro */}
             <Comment
               avatar="https://randomuser.me/api/portraits/women/32.jpg"
               name="Camila Ribeiro"
