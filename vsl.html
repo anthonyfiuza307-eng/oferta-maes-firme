@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dra. Mariana Alves | Protocolo Mães Firmes</title>
+  <meta name="description" content="O erro de 93% das mães: por que abdominais tradicionais estão destruindo sua barriga.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            fb: {
+              blue: '#0866FF',
+              blueDark: '#0557D5',
+              blueLight: '#E7F0FD',
+              gray: '#F0F2F5',
+              grayDark: '#65676B',
+              grayHover: '#E4E6EB',
+              text: '#050505',
+              border: '#CDD1D5',
+            },
+            emerald: {
+              500: '#10B981',
+              600: '#059669',
+              700: '#047857',
+            }
+          },
+          boxShadow: {
+            'fb': '0 1px 2px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.1)',
+            'fb-card': '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- React + ReactDOM + Babel (CDN) -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background-color: #F0F2F5;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- Fade-in do CTA ---- */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .cta-fadein {
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* ---- Pulse leve no botão CTA ---- */
+    @keyframes softPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+      50%       { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    }
+    .cta-pulse { animation: softPulse 2.4s ease-in-out infinite; }
+
+    /* ---- Hover nos botões de ação do FB ---- */
+    .fb-action-btn:hover { background-color: #E4E6EB; }
+
+    /* ---- Avatar overlap ---- */
+    .avatar-stack { display: flex; align-items: center; }
+    .avatar-stack img { margin-left: -6px; border: 2px solid #fff; }
+    .avatar-stack img:first-child { margin-left: 0; }
+
+    /* Contador de progresso do CTA */
+    @keyframes countdown {
+      from { width: 100%; }
+      to   { width: 0%;   }
+    }
+    .progress-bar {
+      animation: countdown 300s linear forwards;
+    }
+
+    /* Link Reply indent */
+    .reply-indent { margin-left: 44px; margin-top: 6px; }
+  </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+/* ══════════════════════════════════════════
+   HELPERS / COMPONENTES ATÔMICOS
+══════════════════════════════════════════ */
+
+/* Ícone Verificado Azul (Facebook) */
+function VerifiedBadge() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block ml-1 align-text-bottom">
+      <circle cx="8" cy="8" r="8" fill="#0866FF"/>
+      <path d="M4.5 8.5L6.5 10.5L11.5 5.5" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+/* Ícone Polegar Curtir */
+function LikeIcon({ filled = false, size = 20 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={filled ? '#0866FF' : 'none'} stroke={filled ? '#0866FF' : '#65676B'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/>
+      <path d="M15 22H18a2 2 0 002-2v-5a2 2 0 00-2-2h-3"/>
+      <path d="M15 22V13c0-3.3-2-6-5-7L7 5V3a2 2 0 012-2 6 6 0 016 6v2h3a2 2 0 012 2v.5"/>
+    </svg>
+  );
+}
+
+/* Ícone Comentar */
+function CommentIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#65676B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+    </svg>
+  );
+}
+
+/* Ícone Compartilhar */
+function ShareIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#65676B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+    </svg>
+  );
+}
+
+/* Ícone Globe */
+function GlobeIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="#65676B" className="inline-block">
+      <circle cx="12" cy="12" r="10" fill="#65676B" opacity="0.15"/>
+      <path stroke="#65676B" strokeWidth="1.5" fill="none" d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 0c-2.4 2-4 5.6-4 10s1.6 8 4 10m0-20c2.4 2 4 5.6 4 10s-1.6 8-4 10M2 12h20"/>
+    </svg>
+  );
+}
+
+/* Avatar */
+function Avatar({ src, size = 40, alt = '' }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      width={size}
+      height={size}
+      className="rounded-full object-cover flex-shrink-0"
+      style={{ width: size, height: size }}
+    />
+  );
+}
+
+/* Botão Like de Comentário */
+function CommentLikeBtn({ count }) {
+  const [liked, setLiked] = useState(false);
+  const [likes, setLikes] = useState(count);
+  const toggle = () => {
+    if (liked) {
+      setLiked(false);
+      setLikes(l => l - 1);
+    } else {
+      setLiked(true);
+      setLikes(l => l + 1);
+    }
+  };
+  return (
+    <span className="flex items-center gap-1">
+      <button onClick={toggle} className={`font-semibold text-xs hover:underline ${liked ? 'text-[#0866FF]' : 'text-[#65676B]'}`}>
+        Curtir
+      </button>
+      {likes > 0 && (
+        <span className="flex items-center gap-0.5 ml-1">
+          <span className="text-xs text-[#65676B]">{likes.toLocaleString('pt-BR')}</span>
+        </span>
+      )}
+    </span>
+  );
+}
+
+/* ══════════════════════════════════════════
+   COMPONENTE DE COMENTÁRIO SIMPLES
+══════════════════════════════════════════ */
+function Comment({ avatar, name, text, time, likes, isAuthor = false, children }) {
+  return (
+    <div className="flex gap-2">
+      <Avatar src={avatar} size={36} alt={name} />
+      <div className="flex-1">
+        <div className="bg-[#F0F2F5] rounded-2xl px-3 py-2 inline-block max-w-full">
+          <div className="flex items-center gap-1 flex-wrap">
+            <span className="font-semibold text-sm text-[#050505]">{name}</span>
+            {isAuthor && (
+              <span className="text-[10px] font-semibold text-[#0866FF] bg-[#E7F0FD] px-1.5 py-0.5 rounded-full">Autora</span>
+            )}
+          </div>
+          <p className="text-sm text-[#050505] mt-0.5 leading-snug">{text}</p>
+        </div>
+        <div className="flex items-center gap-3 mt-1 ml-1 flex-wrap">
+          <CommentLikeBtn count={likes} />
+          <button className="text-xs font-semibold text-[#65676B] hover:underline">Responder</button>
+          <span className="text-xs text-[#65676B]">{time}</span>
+        </div>
+        {/* Respostas aninhadas */}
+        {children && (
+          <div className="reply-indent mt-2 space-y-3">
+            {children}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════
+   COMPONENTE PRINCIPAL: ADVERTORIAL VSL
+══════════════════════════════════════════ */
+function FacebookVSL() {
+  /* ---- Estado: Curtidas do Post ---- */
+  const INITIAL_LIKES = 12000;
+  const [postLiked, setPostLiked] = useState(false);
+  const [postLikes, setPostLikes] = useState(INITIAL_LIKES);
+
+  const handlePostLike = () => {
+    if (postLiked) {
+      setPostLiked(false);
+      setPostLikes(l => l - 1);
+    } else {
+      setPostLiked(true);
+      setPostLikes(l => l + 1);
+    }
+  };
+
+  /* ---- Estado: Visibilidade do CTA ---- */
+  const CTA_DELAY_MS = 300000; // 5 minutos exatos
+  const CTA_KEY = 'mf_vsl_cta_shown';
+
+  const [ctaVisible, setCtaVisible] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(null);    // segundos restantes para o CTA
+
+  useEffect(() => {
+    // Verifica se o CTA já foi liberado antes (localStorage)
+    const alreadyShown = localStorage.getItem(CTA_KEY);
+    if (alreadyShown === 'true') {
+      setCtaVisible(true);
+      return;
+    }
+
+    // Calcula o timestamp de quando deve aparecer
+    const ARRIVAL_KEY = 'mf_vsl_arrival';
+    let arrivalTime = parseInt(localStorage.getItem(ARRIVAL_KEY) || '0', 10);
+    const now = Date.now();
+
+    if (!arrivalTime || now - arrivalTime > CTA_DELAY_MS * 2) {
+      // Primeira visita: grava o timestamp de chegada
+      arrivalTime = now;
+      localStorage.setItem(ARRIVAL_KEY, String(arrivalTime));
+    }
+
+    const elapsed = now - arrivalTime;
+    const remaining = Math.max(CTA_DELAY_MS - elapsed, 0);
+
+    if (remaining === 0) {
+      setCtaVisible(true);
+      localStorage.setItem(CTA_KEY, 'true');
+      return;
+    }
+
+    // Contador visual em segundos
+    setTimeLeft(Math.ceil(remaining / 1000));
+    const countInterval = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(countInterval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    // Timeout que revela o CTA
+    const ctaTimer = setTimeout(() => {
+      setCtaVisible(true);
+      localStorage.setItem(CTA_KEY, 'true');
+    }, remaining);
+
+    return () => {
+      clearTimeout(ctaTimer);
+      clearInterval(countInterval);
+    };
+  }, []);
+
+  /* ---- URL de Destino ---- */
+  const LP_URL = 'index.html#planos';
+
+  /* ---- Formatadores ---- */
+  const fmtLikes = (n) => {
+    if (n >= 1000) return (n / 1000).toFixed(n % 1000 === 0 ? 0 : 1).replace('.', ',') + ' mil';
+    return n.toLocaleString('pt-BR');
+  };
+
+  const fmtTime = (sec) => {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  };
+
+  /* ══════════════════════════════════════════
+     RENDER
+  ══════════════════════════════════════════ */
+  return (
+    <div className="min-h-screen bg-[#F0F2F5]">
+
+      {/* ── HEADER FAKE DO FACEBOOK (Barra Superior) ── */}
+      <header className="bg-white border-b border-[#CDD1D5] sticky top-0 z-30 shadow-fb">
+        <div className="max-w-[680px] mx-auto px-4 h-14 flex items-center justify-between">
+          {/* Logo Facebook */}
+          <svg height="40" viewBox="0 0 60 60" fill="#0866FF">
+            <path d="M55.44 0H4.56C2.04 0 0 2.04 0 4.56v50.88C0 57.96 2.04 60 4.56 60h27.36V36.84H24.3v-9.12h7.62v-6.72c0-7.56 4.62-11.7 11.4-11.7 3.24 0 6.6.24 9.84.72v7.8h-6.72c-3.6 0-4.32 1.74-4.32 4.26v5.64h8.64l-1.14 9.12H42.12V60h13.32C57.96 60 60 57.96 60 55.44V4.56C60 2.04 57.96 0 55.44 0z"/>
+          </svg>
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-[#F0F2F5] flex items-center justify-center cursor-pointer hover:bg-[#E4E6EB]">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#050505"><circle cx="11" cy="11" r="8"/><path stroke="white" strokeWidth="2" strokeLinecap="round" d="M21 21l-4.35-4.35"/></svg>
+            </div>
+            <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" size={32} alt="Perfil"/>
+          </div>
+        </div>
+      </header>
+
+      {/* ── CONTEÚDO PRINCIPAL ── */}
+      <main className="max-w-[680px] mx-auto px-2 sm:px-0 py-4 sm:py-5 pb-32">
+
+        {/* ── POST CARD ── */}
+        <article className="bg-white rounded-lg shadow-fb-card overflow-hidden">
+
+          {/* Post Header */}
+          <div className="px-4 pt-4 pb-3 flex items-start gap-2.5">
+            <div className="relative flex-shrink-0">
+              <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" size={42} alt="Dra. Mariana Alves"/>
+              {/* Ícone de página azul no avatar */}
+              <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-[#0866FF] rounded-full flex items-center justify-center">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/><path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+              </div>
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center flex-wrap gap-x-1">
+                <span className="font-bold text-[15px] text-[#050505] leading-tight hover:underline cursor-pointer">
+                  Dra. Mariana Alves
+                </span>
+                <VerifiedBadge />
+                <span className="text-[13px] text-[#65676B] font-normal">513 mil seguidores</span>
+              </div>
+              <div className="flex items-center gap-1 mt-0.5">
+                <span className="text-[12px] text-[#65676B]">Ontem às 19:30</span>
+                <span className="text-[#65676B] text-[12px]">·</span>
+                <GlobeIcon />
+              </div>
+            </div>
+            {/* Menu 3 pontinhos */}
+            <button className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-[#F0F2F5] flex-shrink-0 text-[#65676B]">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/>
+              </svg>
+            </button>
+          </div>
+
+          {/* Texto do Post */}
+          <div className="px-4 pb-3">
+            <p className="text-[15px] text-[#050505] leading-[1.5]">
+              O erro de 93% das mães: por que os abdominais tradicionais estão <strong>destruindo a sua barriga</strong>. 👇
+            </p>
+            <p className="text-[15px] text-[#050505] leading-[1.5] mt-2">
+              Assista o vídeo até o final com o som ligado — eu revelo o atalho de <strong>5 minutos para fechar a diástase de dentro para fora</strong> e resgatar o seu corpo de antes da gravidez, tudo isso enquanto seu bebê dorme.
+            </p>
+          </div>
+
+          {/* Player de Vídeo 16:9 */}
+          <div className="relative bg-black aspect-video w-full overflow-hidden">
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+              {/* Thumbnail / placeholder elegante */}
+              <div className="w-full h-full absolute inset-0 bg-gradient-to-b from-[#1a0a0d] via-[#2D070D] to-[#1a0a0d] flex flex-col items-center justify-center gap-4 px-6">
+                <div className="text-white text-center">
+                  <p className="text-xs text-rose-200 uppercase tracking-widest font-semibold mb-2">Protocolo Mães Firmes</p>
+                  <p className="text-lg sm:text-2xl font-black text-white leading-tight max-w-xs">
+                    Como fechar a diástase em 5 minutos por dia
+                  </p>
+                  <p className="text-xs text-rose-200 mt-2 font-medium">Dra. Mariana Alves | MANP — Ativação Neuromuscular Pós-Parto</p>
+                </div>
+                {/* Play button */}
+                <button
+                  className="w-14 h-14 sm:w-20 sm:h-20 bg-white/20 hover:bg-white/30 border-2 border-white/60 rounded-full flex items-center justify-center transition-all"
+                  aria-label="Assistir vídeo"
+                >
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="white" className="ml-1">
+                    <polygon points="5,3 19,12 5,21"/>
+                  </svg>
+                </button>
+                <p className="text-[11px] text-white/50 font-medium">🔊 Ative o som para a melhor experiência</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Contador de Engajamento */}
+          <div className="px-4 py-2 flex items-center justify-between border-b border-[#CDD1D5]">
+            {/* Reações */}
+            <div className="flex items-center gap-1.5 cursor-pointer hover:underline" title="Ver reações">
+              <div className="avatar-stack">
+                {/* Ícone Curtir */}
+                <span className="w-5 h-5 bg-[#0866FF] rounded-full inline-flex items-center justify-center border-2 border-white" style={{zIndex:2}}>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
+                    <path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3M15 22H18a2 2 0 002-2v-5a2 2 0 00-2-2h-3M15 22V13c0-3.3-2-6-5-7L7 5V3a2 2 0 012-2 6 6 0 016 6v2h3a2 2 0 012 2v.5"/>
+                  </svg>
+                </span>
+                {/* Ícone Coração */}
+                <span className="w-5 h-5 bg-red-500 rounded-full inline-flex items-center justify-center border-2 border-white" style={{zIndex:1, marginLeft:-6}}>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                  </svg>
+                </span>
+              </div>
+              <span className="text-[13px] text-[#65676B]">
+                {fmtLikes(postLikes)}
+              </span>
+            </div>
+
+            {/* Comentários e Compartilhamentos */}
+            <div className="flex items-center gap-2 text-[13px] text-[#65676B]">
+              <span className="hover:underline cursor-pointer">263 comentários</span>
+              <span>·</span>
+              <span className="hover:underline cursor-pointer">42 compartilhamentos</span>
+            </div>
+          </div>
+
+          {/* Botões de Ação do Facebook */}
+          <div className="px-2 py-1 flex items-center justify-around border-b border-[#CDD1D5]">
+
+            {/* Curtir */}
+            <button
+              onClick={handlePostLike}
+              className={`fb-action-btn flex-1 h-9 flex items-center justify-center gap-1.5 rounded-md text-sm font-semibold transition-colors ${
+                postLiked ? 'text-[#0866FF]' : 'text-[#65676B]'
+              }`}
+            >
+              <LikeIcon filled={postLiked} size={18}/>
+              <span>{postLiked ? 'Curtiu' : 'Curtir'}</span>
+            </button>
+
+            {/* Comentar */}
+            <button className="fb-action-btn flex-1 h-9 flex items-center justify-center gap-1.5 rounded-md text-sm font-semibold text-[#65676B] transition-colors">
+              <CommentIcon />
+              <span>Comentar</span>
+            </button>
+
+            {/* Compartilhar */}
+            <button className="fb-action-btn flex-1 h-9 flex items-center justify-center gap-1.5 rounded-md text-sm font-semibold text-[#65676B] transition-colors">
+              <ShareIcon />
+              <span>Compartilhar</span>
+            </button>
+
+          </div>
+
+          {/* ── SEÇÃO DE COMENTÁRIOS ── */}
+          <div className="px-4 py-3 space-y-4">
+
+            {/* Campo de comentário do usuário */}
+            <div className="flex items-center gap-2">
+              <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" size={32} alt="Você"/>
+              <div className="flex-1 bg-[#F0F2F5] rounded-full px-4 py-2 text-[13px] text-[#65676B] cursor-text hover:bg-[#E4E6EB] transition-colors">
+                Escreva um comentário público…
+              </div>
+            </div>
+
+            {/* Comentário 1: Camila Ribeiro */}
+            <Comment
+              avatar="https://randomuser.me/api/portraits/women/32.jpg"
+              name="Camila Ribeiro"
+              text="Gente, funciona mesmo!!! Eu sou mãe de gêmeos e não tenho tempo pra nada. Faço os exercícios em 5 minutinhos enquanto eles dormem. Minha diástase fechou quase toda e minha barriga parou de ficar estufada. 🙏"
+              time="23 h"
+              likes={62}
+            />
+
+            {/* Comentário 2: Mariana Costa */}
+            <Comment
+              avatar="https://randomuser.me/api/portraits/women/61.jpg"
+              name="Mariana Costa"
+              text="Eu já tinha tentado de tudo no YouTube e só piorou minha barriga... Comecei esse protocolo do MANP faz 12 dias e a inflamação sumiu de um jeito que voltei a entrar numa calça jeans de 4 anos atrás! Tô em choque."
+              time="19 h"
+              likes={156}
+            />
+
+            {/* Comentário 3: Renata Nogueira + Resposta da Dra. */}
+            <Comment
+              avatar="https://randomuser.me/api/portraits/women/48.jpg"
+              name="Renata Nogueira"
+              text="Doutora, eu tive filho há 5 anos, será que ainda dá resultado pra mim?"
+              time="17 h"
+              likes={14}
+            >
+              {/* Resposta Aninhada */}
+              <Comment
+                avatar="https://randomuser.me/api/portraits/women/44.jpg"
+                name="Dra. Mariana Alves"
+                text="Com certeza, Renata! O estímulo neuromuscular reativa a musculatura independente de quanto tempo faz que você deu à luz. Pode começar tranquila! 💪"
+                time="16 h"
+                likes={37}
+                isAuthor={true}
+              />
+            </Comment>
+
+          </div>
+
+          {/* ── BOTÃO CTA (Delay de 5 Minutos) ── */}
+          <div className={`px-4 pb-4 transition-opacity duration-700 ${ctaVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            {ctaVisible && (
+              <div className="cta-fadein">
+                {/* Separador */}
+                <div className="border-t border-[#CDD1D5] mb-4 mt-1"></div>
+
+                {/* Aviso de urgência */}
+                <p className="text-center text-[12px] font-semibold text-[#65676B] mb-2.5 uppercase tracking-wide">
+                  ⚠️ Oferta exclusiva disponível por tempo limitado
+                </p>
+
+                <a
+                  href={LP_URL}
+                  className="cta-pulse w-full block bg-emerald-500 hover:bg-emerald-600 text-white text-center font-black rounded-xl py-4 px-6 text-base sm:text-lg transition-colors duration-200 no-underline"
+                  style={{ textDecoration: 'none' }}
+                >
+                  QUERO RESGATAR MEU CORPO AGORA 👉
+                  <span className="block text-[11px] font-normal mt-0.5 text-emerald-100 tracking-wide">
+                    🔒 Acesso imediato • Garantia blindada de 7 dias
+                  </span>
+                </a>
+              </div>
+            )}
+
+            {/* Indicador de progresso enquanto o CTA não aparece */}
+            {!ctaVisible && timeLeft !== null && (
+              <div className="mt-3 mb-1">
+                <div className="border-t border-[#CDD1D5] mb-3 mt-1"></div>
+                <p className="text-center text-[12px] text-[#65676B] mb-2">
+                  ⏱️ Assista o vídeo completo — a oferta exclusiva será liberada em{' '}
+                  <strong className="text-[#0866FF]">{fmtTime(timeLeft)}</strong>
+                </p>
+                <div className="w-full bg-[#E4E6EB] rounded-full h-1.5 overflow-hidden">
+                  <div
+                    className="bg-[#0866FF] h-1.5 rounded-full progress-bar"
+                    style={{ width: `${Math.min((1 - timeLeft / (300)) * 100, 100)}%` }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+
+        </article>
+
+        {/* ── BARRA CTA STICKY NO MOBILE (também com delay) ── */}
+        {ctaVisible && (
+          <div className="fixed bottom-0 left-0 right-0 z-50 sm:hidden px-3 py-2.5 bg-white border-t border-[#CDD1D5] shadow-[0_-2px_12px_rgba(0,0,0,0.1)] cta-fadein">
+            <a
+              href={LP_URL}
+              className="cta-pulse w-full block bg-emerald-500 hover:bg-emerald-600 text-white text-center font-black rounded-xl py-3.5 px-4 text-sm transition-colors no-underline"
+              style={{ textDecoration: 'none' }}
+            >
+              QUERO RESGATAR MEU CORPO AGORA 👉
+              <span className="block text-[10px] font-normal mt-0.5 text-emerald-100">
+                🔒 Acesso imediato • Garantia de 7 dias
+              </span>
+            </a>
+          </div>
+        )}
+
+      </main>
+
+      {/* ── RODAPÉ DA PÁGINA (Fora do Post) ── */}
+      <footer className="bg-[#1C1E21] text-[#8A8D91] text-center text-[11px] py-4 px-4 leading-relaxed">
+        <p>
+          Todos os direitos reservados. Todos os produtos oferecidos são legítimos, com entrega garantida.
+        </p>
+        <p className="mt-0.5">
+          Toda a responsabilidade sobre esta peça publicitária é da empresa. © 2026 Protocolo Mães Firmes.
+        </p>
+        <div className="flex items-center justify-center gap-4 mt-2 text-[10px] flex-wrap">
+          <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
+          <a href="#" className="hover:text-white transition-colors">Privacidade</a>
+          <a href="#" className="hover:text-white transition-colors">Contato</a>
+        </div>
+      </footer>
+
+    </div>
+  );
+}
+
+/* ── Render ── */
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<FacebookVSL />);
+</script>
+</body>
+</html>
