@@ -81,6 +81,20 @@
       transform: translateY(-4px);
       box-shadow: 0 14px 28px -4px rgba(31, 41, 55, 0.1);
     }
+
+    /* Infinite Marquee Slider */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
   </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden selection:bg-brand-600 selection:text-white">
@@ -156,6 +170,57 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- CARROSSEL INFINITO (INFINITE MARQUEE SLIDER - RESULTADOS REAIS) -->
+    <div aria-label="Resultados Reais de Alunas" class="w-full overflow-hidden py-6 md:py-8 relative mt-6 sm:mt-8">
+      
+      <!-- Mascaramento Gradiente Lateral (Suavização nas Bordas) -->
+      <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 md:w-40 bg-gradient-to-r from-[#FDFBF7] via-[#FDFBF7]/90 to-transparent z-10"></div>
+      <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 md:w-40 bg-gradient-to-l from-[#FDFBF7] via-[#FDFBF7]/90 to-transparent z-10"></div>
+
+      <!-- Marquee Track (Loop Contínuo com Pausa no Hover) -->
+      <div class="marquee-track flex">
+
+        <!-- Bloco 1 de Imagens -->
+        <div class="flex gap-4 md:gap-6 shrink-0 pr-4 md:pr-6 items-center">
+          <div class="shrink-0 overflow-hidden rounded-xl md:rounded-2xl border border-black/5 shadow-md bg-white">
+            <img src="carrossel/prova-1.jpg" alt="Antes e Depois Diástase - Aluna 1" class="h-64 md:h-72 w-auto object-cover block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-xl md:rounded-2xl border border-black/5 shadow-md bg-white">
+            <img src="carrossel/prova-2.jpg" alt="Antes e Depois Diástase - Aluna 2" class="h-64 md:h-72 w-auto object-cover block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-xl md:rounded-2xl border border-black/5 shadow-md bg-white">
+            <img src="carrossel/prova-3.jpg" alt="Antes e Depois Diástase - Aluna 3" class="h-64 md:h-72 w-auto object-cover block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-xl md:rounded-2xl border border-black/5 shadow-md bg-white">
+            <img src="carrossel/prova-4.jpg" alt="Antes e Depois Diástase - Aluna 4" class="h-64 md:h-72 w-auto object-cover block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-xl md:rounded-2xl border border-black/5 shadow-md bg-white">
+            <img src="carrossel/prova-5.jpg" alt="Antes e Depois Diástase - Aluna 5" class="h-64 md:h-72 w-auto object-cover block" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Bloco 2 (Duplicata idêntica para o loop infinito contínuo) -->
+        <div class="flex gap-4 md:gap-6 shrink-0 pr-4 md:pr-6 items-center" aria-hidden="true">
+          <div class="shrink-0 overflow-hidden rounded-xl md:rounded-2xl border border-black/5 shadow-md bg-white">
+            <img src="carrossel/prova-1.jpg" alt="Antes e Depois Diástase - Aluna 1" class="h-64 md:h-72 w-auto object-cover block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-xl md:rounded-2xl border border-black/5 shadow-md bg-white">
+            <img src="carrossel/prova-2.jpg" alt="Antes e Depois Diástase - Aluna 2" class="h-64 md:h-72 w-auto object-cover block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-xl md:rounded-2xl border border-black/5 shadow-md bg-white">
+            <img src="carrossel/prova-3.jpg" alt="Antes e Depois Diástase - Aluna 3" class="h-64 md:h-72 w-auto object-cover block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-xl md:rounded-2xl border border-black/5 shadow-md bg-white">
+            <img src="carrossel/prova-4.jpg" alt="Antes e Depois Diástase - Aluna 4" class="h-64 md:h-72 w-auto object-cover block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-xl md:rounded-2xl border border-black/5 shadow-md bg-white">
+            <img src="carrossel/prova-5.jpg" alt="Antes e Depois Diástase - Aluna 5" class="h-64 md:h-72 w-auto object-cover block" loading="lazy">
+          </div>
+        </div>
+
+      </div>
     </div>
   </header>
 
