@@ -208,8 +208,8 @@ function Comment({ avatar, name, text, time, likes, isAuthor = false, children }
   return (
     <div className="flex gap-2">
       <Avatar src={avatar} size={36} alt={name} />
-      <div className="flex-1">
-        <div className="bg-[#F0F2F5] rounded-2xl px-3 py-2 inline-block max-w-full">
+      <div className="flex-1 min-w-0">
+        <div className="bg-[#F0F2F5] rounded-2xl px-3 py-2 inline-block max-w-[88%] md:max-w-[90%]">
           <div className="flex items-center gap-1 flex-wrap">
             <span className="font-semibold text-sm text-[#050505]">{name}</span>
             {isAuthor && (
@@ -225,7 +225,7 @@ function Comment({ avatar, name, text, time, likes, isAuthor = false, children }
         </div>
         {/* Respostas aninhadas */}
         {children && (
-          <div className="reply-indent mt-2 space-y-3">
+          <div className="reply-indent mt-2 space-y-2.5">
             {children}
           </div>
         )}
@@ -264,14 +264,18 @@ function FacebookVSL() {
     }
   };
 
-  /* ---- Estado: Visibilidade do CTA ---- */
-  const CTA_DELAY_MS = 300000; // 5 minutos exatos
+  /* ---- Estado: Visibilidade do CTA (Ativo provisoriamente por padrão para testes) ---- */
+  const CTA_DELAY_MS = 300000; // 5 minutos exatos (quando ativado)
   const CTA_KEY = 'mf_vsl_cta_shown';
 
-  const [ctaVisible, setCtaVisible] = useState(false);
+  // ATIVAÇÃO PROVISÓRIA: true por padrão para testes imediatos.
+  const [ctaVisible, setCtaVisible] = useState(true);
   const [timeLeft, setTimeLeft] = useState(null);    // segundos restantes para o CTA
 
   useEffect(() => {
+    // Se estiver ativado por padrão para testes, mantém visível
+    if (ctaVisible) return;
+
     // Verifica se o CTA já foi liberado antes (localStorage)
     const alreadyShown = localStorage.getItem(CTA_KEY);
     if (alreadyShown === 'true') {
@@ -356,13 +360,13 @@ function FacebookVSL() {
       </header>
 
       {/* ── CONTEÚDO PRINCIPAL (Compacto para o vídeo aparecer de imediato) ── */}
-      <main className="max-w-[680px] mx-auto px-0 sm:px-2 pt-1 sm:pt-3 pb-24">
+      <main className="max-w-[680px] mx-auto px-0 sm:px-2 pt-1 sm:pt-2 pb-6 sm:pb-8">
 
         {/* ── POST CARD ── */}
-        <article className="bg-white sm:rounded-lg shadow-sm border-y sm:border border-[#CDD1D5] overflow-hidden">
+        <article className="bg-white w-full rounded-none sm:rounded-lg shadow-sm border-y sm:border border-[#CDD1D5] overflow-hidden">
 
           {/* Post Header Compacto */}
-          <div className="px-3 sm:px-4 pt-2.5 pb-2 flex items-center gap-2.5">
+          <div className="px-3 sm:px-4 py-2 flex items-center gap-2.5">
             <div className="relative flex-shrink-0">
               <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" size={38} alt="Dra. Mariana Alves"/>
               {/* Ícone de página azul no avatar */}
@@ -393,7 +397,7 @@ function FacebookVSL() {
           </div>
 
           {/* Texto do Post - Exato e Direto */}
-          <div className="px-3 sm:px-4 pb-2.5">
+          <div className="px-3 sm:px-4 pt-0 pb-1 mb-3">
             <p className="text-[13.5px] sm:text-[14.5px] text-[#050505] leading-snug">
               O erro de 93% das mães: por que os abdominais tradicionais estão <strong>destruindo a sua barriga</strong>.
             </p>
@@ -450,7 +454,7 @@ function FacebookVSL() {
           </div>
 
           {/* Contador de Engajamento */}
-          <div className="px-4 py-2 flex items-center justify-between border-b border-[#CDD1D5]">
+          <div className="px-3 sm:px-4 py-2 mt-2.5 flex items-center justify-between border-b border-[#CDD1D5]">
             {/* Reações */}
             <div className="flex items-center gap-1.5 cursor-pointer hover:underline" title="Ver reações">
               <div className="avatar-stack">
@@ -508,50 +512,45 @@ function FacebookVSL() {
 
           </div>
 
-          {/* ── BOTÃO CTA (Delay de 5 Minutos) — Logo após a barra de ações, antes dos comentários ── */}
-          <div className={`px-4 pt-3 pb-2 transition-opacity duration-700 ${ctaVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-            {ctaVisible && (
-              <div className="cta-fadein">
-                {/* Aviso de urgência */}
-                <p className="text-center text-[12px] font-semibold text-[#65676B] mb-2.5 uppercase tracking-wide">
-                  ⚠️ Oferta exclusiva disponível por tempo limitado
-                </p>
+          {/* ── BOTÃO CTA (Renderização condicional estrita: sem espaço fantasma quando inativo) ── */}
+          {ctaVisible && (
+            <div className="my-3 px-3 sm:px-4 mb-4 cta-fadein">
+              {/* Aviso de urgência */}
+              <p className="text-center text-[12px] font-semibold text-[#65676B] mb-2 uppercase tracking-wide">
+                ⚠️ Oferta exclusiva disponível por tempo limitado
+              </p>
 
-                <a
-                  href={LP_URL}
-                  className="cta-pulse w-full block bg-emerald-500 hover:bg-emerald-600 text-white text-center font-black rounded-xl py-4 px-6 text-base sm:text-lg transition-colors duration-200 no-underline"
-                  style={{ textDecoration: 'none' }}
-                >
-                  QUERO RESGATAR MEU CORPO AGORA 👉
-                  <span className="block text-[11px] font-normal mt-0.5 text-emerald-100 tracking-wide">
-                    🔒 Acesso imediato • Garantia blindada de 7 dias
-                  </span>
-                </a>
+              <a
+                href={LP_URL}
+                className="cta-pulse w-full block bg-emerald-500 hover:bg-emerald-600 text-white text-center font-bold rounded-xl py-3.5 px-4 text-base transition-colors duration-200 no-underline shadow-md"
+                style={{ textDecoration: 'none' }}
+              >
+                QUERO RESGATAR MEU CORPO AGORA 👉
+                <span className="block text-xs font-normal mt-0.5 text-emerald-100 tracking-wide">
+                  🔒 Acesso imediato • Garantia blindada de 7 dias
+                </span>
+              </a>
+            </div>
+          )}
+
+          {/* Indicador de progresso se o delay estiver ativo no futuro */}
+          {!ctaVisible && timeLeft !== null && (
+            <div className="my-2 px-3 sm:px-4">
+              <p className="text-center text-[12px] text-[#65676B] mb-1.5">
+                ⏱️ Assista o vídeo completo — a oferta exclusiva será liberada em{' '}
+                <strong className="text-[#0866FF]">{fmtTime(timeLeft)}</strong>
+              </p>
+              <div className="w-full bg-[#E4E6EB] rounded-full h-1.5 overflow-hidden">
+                <div
+                  className="bg-[#0866FF] h-1.5 rounded-full progress-bar"
+                  style={{ width: `${Math.min((1 - timeLeft / (300)) * 100, 100)}%` }}
+                />
               </div>
-            )}
-
-            {/* Indicador de progresso enquanto o CTA não aparece */}
-            {!ctaVisible && timeLeft !== null && (
-              <div className="mt-1 mb-1">
-                <p className="text-center text-[12px] text-[#65676B] mb-2">
-                  ⏱️ Assista o vídeo completo — a oferta exclusiva será liberada em{' '}
-                  <strong className="text-[#0866FF]">{fmtTime(timeLeft)}</strong>
-                </p>
-                <div className="w-full bg-[#E4E6EB] rounded-full h-1.5 overflow-hidden">
-                  <div
-                    className="bg-[#0866FF] h-1.5 rounded-full progress-bar"
-                    style={{ width: `${Math.min((1 - timeLeft / (300)) * 100, 100)}%` }}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Divisor entre CTA e comentários */}
-          <div className="mx-4 border-t border-[#CDD1D5]"></div>
+            </div>
+          )}
 
           {/* ── SEÇÃO DE COMENTÁRIOS ── */}
-          <div className="px-4 py-3 space-y-4">
+          <div className="px-3 sm:px-4 pt-1 pb-3 space-y-3 sm:space-y-4">
 
 
             <Comment
@@ -595,12 +594,12 @@ function FacebookVSL() {
 
         </article>
 
-        {/* ── BARRA CTA STICKY NO MOBILE (também com delay) ── */}
+        {/* ── BARRA CTA STICKY NO MOBILE ── */}
         {ctaVisible && (
-          <div className="fixed bottom-0 left-0 right-0 z-50 sm:hidden px-3 py-2.5 bg-white border-t border-[#CDD1D5] shadow-[0_-2px_12px_rgba(0,0,0,0.1)] cta-fadein">
+          <div className="fixed bottom-0 left-0 right-0 z-50 sm:hidden px-3 py-2 bg-white border-t border-[#CDD1D5] shadow-[0_-2px_12px_rgba(0,0,0,0.1)] cta-fadein">
             <a
               href={LP_URL}
-              className="cta-pulse w-full block bg-emerald-500 hover:bg-emerald-600 text-white text-center font-black rounded-xl py-3.5 px-4 text-sm transition-colors no-underline"
+              className="cta-pulse w-full block bg-emerald-500 hover:bg-emerald-600 text-white text-center font-bold rounded-xl py-3 px-4 text-sm transition-colors no-underline"
               style={{ textDecoration: 'none' }}
             >
               QUERO RESGATAR MEU CORPO AGORA 👉
