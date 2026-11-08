@@ -329,91 +329,99 @@ function FacebookVSL() {
   return (
     <div className="min-h-screen bg-[#F0F2F5]">
 
-      {/* ── HEADER FAKE DO FACEBOOK (Barra Superior) ── */}
-      <header className="bg-white border-b border-[#CDD1D5] sticky top-0 z-30 shadow-fb">
-        <div className="max-w-[680px] mx-auto px-4 h-14 flex items-center justify-between">
-          {/* Logo Facebook */}
-          <svg height="40" viewBox="0 0 60 60" fill="#0866FF">
+      {/* ── HEADER FAKE DO FACEBOOK (Barra Superior Compacta) ── */}
+      <header className="bg-white border-b border-[#CDD1D5] sticky top-0 z-30 shadow-sm">
+        <div className="max-w-[680px] mx-auto px-3 sm:px-4 h-10 sm:h-11 flex items-center justify-between">
+          {/* Logo Facebook Compacto */}
+          <svg height="28" viewBox="0 0 60 60" fill="#0866FF" className="sm:h-8">
             <path d="M55.44 0H4.56C2.04 0 0 2.04 0 4.56v50.88C0 57.96 2.04 60 4.56 60h27.36V36.84H24.3v-9.12h7.62v-6.72c0-7.56 4.62-11.7 11.4-11.7 3.24 0 6.6.24 9.84.72v7.8h-6.72c-3.6 0-4.32 1.74-4.32 4.26v5.64h8.64l-1.14 9.12H42.12V60h13.32C57.96 60 60 57.96 60 55.44V4.56C60 2.04 57.96 0 55.44 0z"/>
           </svg>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-[#F0F2F5] flex items-center justify-center cursor-pointer hover:bg-[#E4E6EB]">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#050505"><circle cx="11" cy="11" r="8"/><path stroke="white" strokeWidth="2" strokeLinecap="round" d="M21 21l-4.35-4.35"/></svg>
+            <div className="w-7 h-7 rounded-full bg-[#F0F2F5] flex items-center justify-center cursor-pointer hover:bg-[#E4E6EB]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#050505"><circle cx="11" cy="11" r="8"/><path stroke="white" strokeWidth="2" strokeLinecap="round" d="M21 21l-4.35-4.35"/></svg>
             </div>
-            <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" size={32} alt="Perfil"/>
+            <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" size={26} alt="Perfil"/>
           </div>
         </div>
       </header>
 
-      {/* ── CONTEÚDO PRINCIPAL ── */}
-      <main className="max-w-[680px] mx-auto px-2 sm:px-0 py-4 sm:py-5 pb-32">
+      {/* ── CONTEÚDO PRINCIPAL (Compacto para o vídeo aparecer de imediato) ── */}
+      <main className="max-w-[680px] mx-auto px-0 sm:px-2 pt-1 sm:pt-3 pb-24">
 
         {/* ── POST CARD ── */}
-        <article className="bg-white rounded-lg shadow-fb-card overflow-hidden">
+        <article className="bg-white sm:rounded-lg shadow-sm border-y sm:border border-[#CDD1D5] overflow-hidden">
 
-          {/* Post Header */}
-          <div className="px-4 pt-4 pb-3 flex items-start gap-2.5">
+          {/* Post Header Compacto */}
+          <div className="px-3 sm:px-4 pt-2.5 pb-2 flex items-center gap-2.5">
             <div className="relative flex-shrink-0">
-              <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" size={42} alt="Dra. Mariana Alves"/>
+              <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" size={38} alt="Dra. Mariana Alves"/>
               {/* Ícone de página azul no avatar */}
-              <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-[#0866FF] rounded-full flex items-center justify-center">
-                <svg width="9" height="9" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/><path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+              <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-[#0866FF] rounded-full flex items-center justify-center border border-white">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
               </div>
             </div>
             <div className="flex-1 min-w-0">
-              <div className="flex items-center flex-wrap gap-x-1">
-                <span className="font-bold text-[15px] text-[#050505] leading-tight hover:underline cursor-pointer">
+              <div className="flex items-center flex-wrap gap-x-1 leading-tight">
+                <span className="font-bold text-[14px] sm:text-[15px] text-[#050505] hover:underline cursor-pointer">
                   Dra. Mariana Alves
                 </span>
                 <VerifiedBadge />
-                <span className="text-[13px] text-[#65676B] font-normal">513 mil seguidores</span>
+                <span className="text-[12px] text-[#65676B] font-normal">· 513 mil seguidores</span>
               </div>
-              <div className="flex items-center gap-1 mt-0.5">
-                <span className="text-[12px] text-[#65676B]">Ontem às 19:30</span>
-                <span className="text-[#65676B] text-[12px]">·</span>
+              <div className="flex items-center gap-1 mt-0.5 leading-none">
+                <span className="text-[11px] sm:text-[12px] text-[#65676B]">Ontem às 19:30</span>
+                <span className="text-[#65676B] text-[11px]">·</span>
                 <GlobeIcon />
               </div>
             </div>
             {/* Menu 3 pontinhos */}
-            <button className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-[#F0F2F5] flex-shrink-0 text-[#65676B]">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <button className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-[#F0F2F5] flex-shrink-0 text-[#65676B]">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/>
               </svg>
             </button>
           </div>
 
-          {/* Texto do Post */}
-          <div className="px-4 pb-3">
-            <p className="text-[15px] text-[#050505] leading-[1.5]">
-              O erro de 93% das mães: por que os abdominais tradicionais estão <strong>destruindo a sua barriga</strong>. 👇
+          {/* Texto do Post - Exato e Direto */}
+          <div className="px-3 sm:px-4 pb-2.5">
+            <p className="text-[13.5px] sm:text-[14.5px] text-[#050505] leading-snug">
+              O erro de 93% das mães: por que os abdominais tradicionais estão <strong>destruindo a sua barriga</strong>.
             </p>
-            <p className="text-[15px] text-[#050505] leading-[1.5] mt-2">
-              Assista o vídeo até o final com o som ligado — eu revelo o atalho de <strong>5 minutos para fechar a diástase de dentro para fora</strong> e resgatar o seu corpo de antes da gravidez, tudo isso enquanto seu bebê dorme.
+            <p className="text-[13.5px] sm:text-[14.5px] text-[#050505] leading-snug mt-1">
+              Assista o vídeo até o final com o som ligado — eu revelo o atalho de <strong>5 minutos para fechar a diástase de dentro para fora</strong> e resgatar o seu corpo de antes da gravidez, tudo isso enquanto seu bebê dorme. 👇
             </p>
           </div>
 
-          {/* Player de Vídeo 16:9 */}
-          <div className="relative bg-black aspect-video w-full overflow-hidden">
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-              {/* Thumbnail / placeholder elegante */}
-              <div className="w-full h-full absolute inset-0 bg-gradient-to-b from-[#1a0a0d] via-[#2D070D] to-[#1a0a0d] flex flex-col items-center justify-center gap-4 px-6">
+          {/* Player de Vídeo 16:9 em Destaque Absoluto (Above the fold) */}
+          <div className="relative bg-black aspect-video w-full overflow-hidden shadow-inner">
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              {/* Thumbnail e Player simulado */}
+              <div className="w-full h-full absolute inset-0 bg-gradient-to-b from-[#1a0a0d] via-[#2D070D] to-[#1a0a0d] flex flex-col items-center justify-center gap-3 px-4 sm:px-6">
                 <div className="text-white text-center">
-                  <p className="text-xs text-rose-200 uppercase tracking-widest font-semibold mb-2">Protocolo Mães Firmes</p>
-                  <p className="text-lg sm:text-2xl font-black text-white leading-tight max-w-xs">
+                  <span className="inline-block bg-rose-600/80 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full mb-1 sm:mb-2">
+                    VÍDEO EXCLUSIVO
+                  </span>
+                  <p className="text-base sm:text-2xl font-black text-white leading-tight max-w-sm sm:max-w-md drop-shadow">
                     Como fechar a diástase em 5 minutos por dia
                   </p>
-                  <p className="text-xs text-rose-200 mt-2 font-medium">Dra. Mariana Alves | MANP — Ativação Neuromuscular Pós-Parto</p>
+                  <p className="text-[11px] sm:text-xs text-rose-200 mt-1 font-medium">
+                    Dra. Mariana Alves | MANP — Ativação Neuromuscular Pós-Parto
+                  </p>
                 </div>
-                {/* Play button */}
+
+                {/* Botão de Play */}
                 <button
-                  className="w-14 h-14 sm:w-20 sm:h-20 bg-white/20 hover:bg-white/30 border-2 border-white/60 rounded-full flex items-center justify-center transition-all"
+                  className="w-14 h-14 sm:w-18 sm:h-18 bg-white/20 hover:bg-white/30 border-2 border-white/80 rounded-full flex items-center justify-center transition-all transform hover:scale-105 shadow-lg cursor-pointer"
                   aria-label="Assistir vídeo"
                 >
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="white" className="ml-1">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" className="ml-1 sm:w-8 sm:h-8">
                     <polygon points="5,3 19,12 5,21"/>
                   </svg>
                 </button>
-                <p className="text-[11px] text-white/50 font-medium">🔊 Ative o som para a melhor experiência</p>
+
+                <p className="text-[10px] sm:text-[11px] text-white/70 font-medium flex items-center gap-1">
+                  <span>🔊</span> Ative o som para a melhor experiência
+                </p>
               </div>
             </div>
           </div>
@@ -615,3 +623,4 @@ root.render(<FacebookVSL />);
 </script>
 </body>
 </html>
+
