@@ -112,6 +112,8 @@
     src="https://www.facebook.com/tr?id=1409385944601105&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
+  <!-- YouTube Iframe API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
 
@@ -262,6 +264,62 @@ function FacebookVSL() {
   const [postLiked, setPostLiked] = useState(false);
   const [postLikes, setPostLikes] = useState(INITIAL_LIKES);
 
+  /* ---- Estado & Refs: Player YouTube Blindado ---- */
+  const [overlayVisible, setOverlayVisible] = useState(true);
+  const iframeRef = useRef(null);
+  const ytPlayerRef = useRef(null);
+
+  useEffect(() => {
+    // Inicializa a API do YouTube quando carregada
+    const initYT = () => {
+      if (window.YT && window.YT.Player) {
+        try {
+          ytPlayerRef.current = new window.YT.Player('vsl-youtube-player', {
+            events: {
+              onReady: () => {
+                // Player pronto
+              }
+            }
+          });
+        } catch (e) {
+          // Fallback silencioso para postMessage
+        }
+      }
+    };
+
+    if (window.YT && window.YT.Player) {
+      initYT();
+    } else {
+      window.onYouTubeIframeAPIReady = initYT;
+    }
+  }, []);
+
+  const handlePlayClick = () => {
+    setOverlayVisible(false);
+
+    // 1. Aciona play e unMute via postMessage direto no contentWindow (instantâneo)
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: 'unMute', args: [] }),
+        '*'
+      );
+      iframeRef.current.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: 'playVideo', args: [] }),
+        '*'
+      );
+    }
+
+    // 2. Aciona via objeto YT Player se disponível
+    if (ytPlayerRef.current && typeof ytPlayerRef.current.playVideo === 'function') {
+      try {
+        ytPlayerRef.current.unMute();
+        ytPlayerRef.current.playVideo();
+      } catch (err) {
+        // Fallback já executado pelo postMessage
+      }
+    }
+  };
+
   const handlePostLike = () => {
     if (postLiked) {
       setPostLiked(false);
@@ -411,17 +469,62 @@ function FacebookVSL() {
             </p>
           </div>
 
-          {/* Player de Vídeo Vertical (Proporção Reels 9:16) */}
+          {/* ── Player de Vídeo Vertical (YouTube Blindado 9:16) ── */}
           <div className="w-full flex justify-center bg-black py-2 px-2 sm:px-0">
-            <div className="aspect-[9/16] w-full max-w-[340px] sm:max-w-[380px] mx-auto overflow-hidden rounded-lg shadow-2xl bg-black relative">
-              {/* Iframe / Embed de Vídeo (Compatível com Panda Video, VTurb, Vimeo, YouTube) */}
+            <div className="aspect-[9/16] w-full max-w-[340px] mx-auto md:max-w-[380px] overflow-hidden rounded-lg shadow-2xl bg-black relative">
+              {/* Iframe Oficial do YouTube (controles ocultos e API ativada) */}
               <iframe
-                src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?controls=1&rel=0&playsinline=1"
-                title="Vídeo VSL Protocolo Mães Firmes"
+                id="vsl-youtube-player"
+                ref={iframeRef}
+                src="https://www.youtube.com/embed/PwR9cgjmR_c?controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&enablejsapi=1"
+                title="Vídeo VSL"
                 className="w-full h-full border-0 block"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
+
+              {/* O Escudo Invisível (Bloqueio total de cliques e navegação para fora) */}
+              <div
+                className="absolute inset-0 z-10 bg-transparent select-none cursor-default"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+                onContextMenu={(e) => e.preventDefault()}
+                aria-hidden="true"
+              ></div>
+
+              {/* Overlay Escurecido Inicial com Botão Gigante de Play */}
+              {overlayVisible && (
+                <div
+                  className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 cursor-pointer bg-gradient-to-b from-[#1a0a0d]/90 via-[#2D070D]/85 to-[#1a0a0d]/90 px-4 text-center transition-all duration-300"
+                  onClick={handlePlayClick}
+                >
+                  <div className="text-white">
+                    <span className="inline-block bg-rose-600/90 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full mb-2">
+                      VÍDEO EXCLUSIVO
+                    </span>
+                    <p className="text-base sm:text-lg font-black text-white leading-tight max-w-[280px] drop-shadow">
+                      Como fechar a diástase em 5 minutos por dia
+                    </p>
+                    <p className="text-[11px] text-rose-200 mt-1 font-medium">
+                      Dra. Mariana Alves | MANP
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col items-center gap-2 mt-1">
+                    <div className="animate-pulse w-20 h-20 sm:w-22 sm:h-22 bg-white/20 border-4 border-white rounded-full flex items-center justify-center shadow-2xl hover:bg-white/30 transition-all transform hover:scale-105">
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="white" className="ml-2">
+                        <polygon points="5,3 19,12 5,21"/>
+                      </svg>
+                    </div>
+                    <p className="text-white font-black text-sm sm:text-base tracking-wide drop-shadow-lg">
+                      ▶ CLIQUE PARA ASSISTIR
+                    </p>
+                  </div>
+
+                  <p className="text-[11px] text-white/70 font-medium flex items-center gap-1 mt-1">
+                    <span>🔊</span> Toque para assistir com som ativado
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
