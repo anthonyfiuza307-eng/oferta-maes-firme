@@ -269,7 +269,17 @@ function FacebookVSL() {
   const iframeRef = useRef(null);
   const ytPlayerRef = useRef(null);
 
+  /* ---- Estado: Visibilidade do CTA (Disparado EXATAMENTE ao clicar no Play: 6 min / 360.000 ms) ---- */
+  const [ctaVisible, setCtaVisible] = useState(false);
+  const ctaTimerRef = useRef(null);
+
   useEffect(() => {
+    // Garante que nenhuma flag anterior force visibilidade ao abrir
+    try {
+      localStorage.removeItem('mf_vsl_cta_shown');
+      localStorage.removeItem('mf_vsl_arrival');
+    } catch (e) {}
+
     // Inicializa a API do YouTube quando carregada
     const initYT = () => {
       if (window.YT && window.YT.Player) {
@@ -292,10 +302,22 @@ function FacebookVSL() {
     } else {
       window.onYouTubeIframeAPIReady = initYT;
     }
+
+    return () => {
+      if (ctaTimerRef.current) {
+        clearTimeout(ctaTimerRef.current);
+      }
+    };
   }, []);
 
   const handlePlayClick = () => {
     setOverlayVisible(false);
+
+    // Inicia o timer de 360.000 ms (6 minutos) EXATAMENTE no momento do Play
+    if (ctaTimerRef.current) clearTimeout(ctaTimerRef.current);
+    ctaTimerRef.current = setTimeout(() => {
+      setCtaVisible(true);
+    }, 360000);
 
     // 1. Aciona play e unMute via postMessage direto no contentWindow (instantâneo)
     if (iframeRef.current && iframeRef.current.contentWindow) {
@@ -330,66 +352,6 @@ function FacebookVSL() {
     }
   };
 
-  /* ---- Estado: Visibilidade do CTA (Delay de exatos 6 minutos / 360.000 ms) ---- */
-  const CTA_DELAY_MS = 360000; // 6 minutos exatos (360.000 ms)
-  const CTA_KEY = 'mf_vsl_cta_shown';
-
-  // Oculto por padrão até atingir os 6 minutos (360.000 ms)
-  const [ctaVisible, setCtaVisible] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(null);    // segundos restantes para o CTA
-
-  useEffect(() => {
-    // Verifica se o CTA já foi liberado antes nesta sessão/navegador
-    const alreadyShown = localStorage.getItem(CTA_KEY);
-    if (alreadyShown === 'true') {
-      setCtaVisible(true);
-      return;
-    }
-
-    // Calcula o timestamp de quando deve aparecer
-    const ARRIVAL_KEY = 'mf_vsl_arrival';
-    let arrivalTime = parseInt(localStorage.getItem(ARRIVAL_KEY) || '0', 10);
-    const now = Date.now();
-
-    if (!arrivalTime || now - arrivalTime > CTA_DELAY_MS * 2) {
-      // Primeira visita: grava o timestamp de chegada
-      arrivalTime = now;
-      localStorage.setItem(ARRIVAL_KEY, String(arrivalTime));
-    }
-
-    const elapsed = now - arrivalTime;
-    const remaining = Math.max(CTA_DELAY_MS - elapsed, 0);
-
-    if (remaining === 0) {
-      setCtaVisible(true);
-      localStorage.setItem(CTA_KEY, 'true');
-      return;
-    }
-
-    // Contador visual em segundos
-    setTimeLeft(Math.ceil(remaining / 1000));
-    const countInterval = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 1) {
-          clearInterval(countInterval);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    // Timeout que revela o CTA após exatos 6 minutos
-    const ctaTimer = setTimeout(() => {
-      setCtaVisible(true);
-      localStorage.setItem(CTA_KEY, 'true');
-    }, remaining);
-
-    return () => {
-      clearTimeout(ctaTimer);
-      clearInterval(countInterval);
-    };
-  }, []);
-
   /* ---- URL de Destino ---- */
   const LP_URL = 'oferta.html#planos';
 
@@ -397,12 +359,6 @@ function FacebookVSL() {
   const fmtLikes = (n) => {
     if (n >= 1000) return (n / 1000).toFixed(n % 1000 === 0 ? 0 : 1).replace('.', ',') + ' mil';
     return n.toLocaleString('pt-BR');
-  };
-
-  const fmtTime = (sec) => {
-    const m = Math.floor(sec / 60);
-    const s = sec % 60;
-    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
   };
 
   /* ══════════════════════════════════════════
@@ -587,7 +543,7 @@ function FacebookVSL() {
 
           </div>
 
-          {/* ── BOTÃO CTA (Renderização condicional estrita: sem espaço fantasma quando inativo) ── */}
+          {/* ── BOTÃO CTA (Renderização condicional estrita: só aparece após 6 min de play) ── */}
           {ctaVisible && (
             <div className="my-3 px-3 sm:px-4 mb-4 cta-fadein">
               {/* Aviso de urgência */}
@@ -605,22 +561,6 @@ function FacebookVSL() {
                   🔒 Acesso imediato • Garantia blindada de 7 dias
                 </span>
               </a>
-            </div>
-          )}
-
-          {/* Indicador de progresso se o delay estiver ativo no futuro */}
-          {!ctaVisible && timeLeft !== null && (
-            <div className="my-2 px-3 sm:px-4">
-              <p className="text-center text-[12px] text-[#65676B] mb-1.5">
-                ⏱️ Assista o vídeo completo — a oferta exclusiva será liberada em{' '}
-                <strong className="text-[#0866FF]">{fmtTime(timeLeft)}</strong>
-              </p>
-              <div className="w-full bg-[#E4E6EB] rounded-full h-1.5 overflow-hidden">
-                <div
-                  className="bg-[#0866FF] h-1.5 rounded-full progress-bar"
-                  style={{ width: `${Math.min((1 - timeLeft / 360) * 100, 100)}%` }}
-                />
-              </div>
             </div>
           )}
 
