@@ -87,7 +87,7 @@
       to   { width: 0%;   }
     }
     .progress-bar {
-      animation: countdown 300s linear forwards;
+      animation: countdown 360s linear forwards;
     }
 
     /* Link Reply indent */
@@ -262,17 +262,6 @@ function FacebookVSL() {
   const [postLiked, setPostLiked] = useState(false);
   const [postLikes, setPostLikes] = useState(INITIAL_LIKES);
 
-  /* ---- Estado: Overlay do Player ---- */
-  const [overlayVisible, setOverlayVisible] = useState(true);
-  const videoRef = useRef(null);
-
-  const handlePlayClick = () => {
-    setOverlayVisible(false);
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
-  };
-
   const handlePostLike = () => {
     if (postLiked) {
       setPostLiked(false);
@@ -283,19 +272,16 @@ function FacebookVSL() {
     }
   };
 
-  /* ---- Estado: Visibilidade do CTA (Ativo provisoriamente por padrão para testes) ---- */
-  const CTA_DELAY_MS = 300000; // 5 minutos exatos (quando ativado)
+  /* ---- Estado: Visibilidade do CTA (Delay de exatos 6 minutos / 360.000 ms) ---- */
+  const CTA_DELAY_MS = 360000; // 6 minutos exatos (360.000 ms)
   const CTA_KEY = 'mf_vsl_cta_shown';
 
-  // ATIVAÇÃO PROVISÓRIA: true por padrão para testes imediatos.
-  const [ctaVisible, setCtaVisible] = useState(true);
+  // Oculto por padrão até atingir os 6 minutos (360.000 ms)
+  const [ctaVisible, setCtaVisible] = useState(false);
   const [timeLeft, setTimeLeft] = useState(null);    // segundos restantes para o CTA
 
   useEffect(() => {
-    // Se estiver ativado por padrão para testes, mantém visível
-    if (ctaVisible) return;
-
-    // Verifica se o CTA já foi liberado antes (localStorage)
+    // Verifica se o CTA já foi liberado antes nesta sessão/navegador
     const alreadyShown = localStorage.getItem(CTA_KEY);
     if (alreadyShown === 'true') {
       setCtaVisible(true);
@@ -334,7 +320,7 @@ function FacebookVSL() {
       });
     }, 1000);
 
-    // Timeout que revela o CTA
+    // Timeout que revela o CTA após exatos 6 minutos
     const ctaTimer = setTimeout(() => {
       setCtaVisible(true);
       localStorage.setItem(CTA_KEY, 'true');
@@ -425,51 +411,18 @@ function FacebookVSL() {
             </p>
           </div>
 
-          {/* Player de Vídeo 16:9 — Pausado com Overlay de Play */}
-          <div className="relative bg-black aspect-video w-full overflow-hidden shadow-inner">
-            {/* Elemento de vídeo real (sem autoplay) */}
-            <video
-              ref={videoRef}
-              className="w-full h-full object-cover"
-              preload="metadata"
-              playsInline
-            >
-              {/* Substitua o src pelo link real do vídeo quando disponível */}
-              <source src="" type="video/mp4" />
-            </video>
-
-            {/* Overlay escurecido com botão de play gigante */}
-            {overlayVisible && (
-              <div
-                className="absolute inset-0 flex flex-col items-center justify-center gap-4 cursor-pointer bg-gradient-to-b from-[#1a0a0d]/90 via-[#2D070D]/85 to-[#1a0a0d]/90"
-                onClick={handlePlayClick}
-              >
-                {/* Título sobre o overlay */}
-                <div className="text-white text-center px-4 sm:px-6">
-                  <span className="inline-block bg-rose-600/80 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full mb-2">
-                    VÍDEO EXCLUSIVO
-                  </span>
-                  <p className="text-base sm:text-2xl font-black text-white leading-tight max-w-sm sm:max-w-md drop-shadow">
-                    Como fechar a diástase em 5 minutos por dia
-                  </p>
-                  <p className="text-[11px] sm:text-xs text-rose-200 mt-1 font-medium">
-                    Dra. Mariana Alves | MANP — Ativação Neuromuscular Pós-Parto
-                  </p>
-                </div>
-
-                {/* Botão Play Gigante com pulse */}
-                <div className="flex flex-col items-center gap-2">
-                  <div className="animate-pulse w-20 h-20 sm:w-24 sm:h-24 bg-white/20 border-4 border-white rounded-full flex items-center justify-center shadow-2xl hover:bg-white/30 transition-all transform hover:scale-110">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="white" className="ml-2 sm:w-12 sm:h-12">
-                      <polygon points="5,3 19,12 5,21"/>
-                    </svg>
-                  </div>
-                  <p className="text-white font-black text-sm sm:text-base tracking-wide drop-shadow-lg">
-                    ▶ CLIQUE AQUI PARA ASSISTIR
-                  </p>
-                </div>
-              </div>
-            )}
+          {/* Player de Vídeo Vertical (Proporção Reels 9:16) */}
+          <div className="w-full flex justify-center bg-black py-2 px-2 sm:px-0">
+            <div className="aspect-[9/16] w-full max-w-[340px] sm:max-w-[380px] mx-auto overflow-hidden rounded-lg shadow-2xl bg-black relative">
+              {/* Iframe / Embed de Vídeo (Compatível com Panda Video, VTurb, Vimeo, YouTube) */}
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?controls=1&rel=0&playsinline=1"
+                title="Vídeo VSL Protocolo Mães Firmes"
+                className="w-full h-full border-0 block"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
 
           {/* Contador de Engajamento */}
@@ -562,7 +515,7 @@ function FacebookVSL() {
               <div className="w-full bg-[#E4E6EB] rounded-full h-1.5 overflow-hidden">
                 <div
                   className="bg-[#0866FF] h-1.5 rounded-full progress-bar"
-                  style={{ width: `${Math.min((1 - timeLeft / (300)) * 100, 100)}%` }}
+                  style={{ width: `${Math.min((1 - timeLeft / 360) * 100, 100)}%` }}
                 />
               </div>
             </div>
