@@ -92,7 +92,23 @@
       width: max-content;
       animation: marquee 45s linear infinite;
     }
-    .marquee-track:hover {
+    .marquee-track:hover,
+    .marquee-track:active {
+      animation-play-state: paused;
+    }
+
+    /* Infinite Marquee Slider (WhatsApp Depoimentos) */
+    @keyframes marqueeWhatsapp {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-whatsapp {
+      display: flex;
+      width: max-content;
+      animation: marqueeWhatsapp 40s linear infinite;
+    }
+    .marquee-whatsapp:hover,
+    .marquee-whatsapp:active {
       animation-play-state: paused;
     }
   </style>
@@ -615,11 +631,12 @@
     </div>
   </section>
 
-  <!-- 7. PROVAS SOCIAIS / ANTES E DEPOIS -->
-  <section class="py-14 md:py-20 bg-theme-bg relative">
+  <!-- 7. PROVAS SOCIAIS / WHATSAPP REAL CARROSSEL -->
+  <section class="py-14 md:py-20 bg-theme-bg relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
 
-      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+      <!-- Ajuste de Título e Subtítulo -->
+      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-theme-darkGraphite mb-3 tracking-tight">
           Resultados Reais de Alunas
         </h2>
@@ -628,98 +645,63 @@
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6">
+    </div>
 
-        <!-- Depoimento 1: Camila -->
-        <div class="card-hover-lift bg-white rounded-2xl p-6 sm:p-7 border border-rose-100 shadow-card-subtle flex flex-col justify-between">
-          <div>
-            <div class="relative rounded-xl overflow-hidden mb-5 border border-slate-200 aspect-[16/10] bg-slate-100">
-              <img 
-                src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800&auto=format&fit=crop" 
-                alt="Resultado Diástase Camila" 
-                class="w-full h-full object-cover"
-              >
-              <div class="absolute top-2.5 left-2.5 bg-brand-900/90 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded shadow">
-                Antes: Afastamento severo
-              </div>
-              <div class="absolute bottom-2.5 right-2.5 bg-emerald-600/95 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded shadow">
-                Depois: Músculo Fechado
-              </div>
-            </div>
+    <!-- CARROSSEL INFINITO DE WHATSAPP (SLIDER CONTÍNUO / RESPONSIVO) -->
+    <div aria-label="Depoimentos WhatsApp de Alunas" class="w-full overflow-hidden py-4 sm:py-6 relative">
+      
+      <!-- Mascaramento Gradiente Lateral (Suavização nas Bordas) -->
+      <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-24 md:w-40 bg-gradient-to-r from-[#FDFBF7] via-[#FDFBF7]/90 to-transparent z-10"></div>
+      <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-24 md:w-40 bg-gradient-to-l from-[#FDFBF7] via-[#FDFBF7]/90 to-transparent z-10"></div>
 
-            <div class="flex text-amber-400 gap-1 mb-2.5">
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            </div>
+      <!-- Marquee Track (Loop Contínuo com Pausa no Hover/Toque) -->
+      <div class="marquee-whatsapp flex">
 
-            <blockquote class="text-theme-mutedText text-sm leading-relaxed italic mb-5">
-              "Eu achava que por ser mãe de gêmeos e não ter tempo nem para respirar, nunca mais ia recuperar meu corpo. O método é tão prático que eu faço enquanto o bebê dorme rapidinho. A minha diástase fechou quase toda e minha autoestima voltou 100%."
-            </blockquote>
+        <!-- Bloco 1 de Prints de WhatsApp -->
+        <div class="flex gap-4 sm:gap-6 shrink-0 pr-4 sm:pr-6 items-center">
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-6.jpg" alt="Depoimento WhatsApp Aluna Juliana - Parte 1" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
           </div>
-
-          <div class="flex items-center gap-3 pt-3.5 border-t border-slate-100">
-            <div class="w-10 h-10 rounded-full bg-rose-100 text-brand-700 font-bold flex items-center justify-center text-sm shrink-0">
-              C
-            </div>
-            <div>
-              <div class="font-bold text-theme-darkGraphite text-sm">Camila, 32 anos</div>
-              <div class="text-theme-mutedText text-xs">Mãe de gêmeos</div>
-            </div>
-            <span class="ml-auto text-emerald-600 text-xs font-semibold flex items-center gap-1">
-              <i data-lucide="badge-check" class="w-4 h-4"></i> Verificada
-            </span>
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-2.jpg" alt="Depoimento WhatsApp Aluna Juliana - Parte 2" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-3.jpg" alt="Depoimento WhatsApp Aluna Camila - Parte 1" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-5.jpg" alt="Depoimento WhatsApp Aluna Camila - Parte 2" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-1.jpg" alt="Depoimento WhatsApp Aluna Amanda - Parte 1" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-4.jpg" alt="Depoimento WhatsApp Aluna Amanda - Parte 2" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
           </div>
         </div>
 
-        <!-- Depoimento 2: Mariana -->
-        <div class="card-hover-lift bg-white rounded-2xl p-6 sm:p-7 border border-rose-100 shadow-card-subtle flex flex-col justify-between">
-          <div>
-            <div class="relative rounded-xl overflow-hidden mb-5 border border-slate-200 aspect-[16/10] bg-slate-100">
-              <img 
-                src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=800&auto=format&fit=crop" 
-                alt="Resultado Mariana Calça Jeans" 
-                class="w-full h-full object-cover"
-              >
-              <div class="absolute top-2.5 left-2.5 bg-brand-900/90 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded shadow">
-                Antes: Barriga Estufada
-              </div>
-              <div class="absolute bottom-2.5 right-2.5 bg-emerald-600/95 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded shadow">
-                Depois: Calça Jeans Serviu!
-              </div>
-            </div>
-
-            <div class="flex text-amber-400 gap-1 mb-2.5">
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            </div>
-
-            <blockquote class="text-theme-mutedText text-sm leading-relaxed italic mb-5">
-              "Depois de dois filhos, eu tinha uma diástase enorme. Achava que minha barriga ia ficar estufada para sempre. Com poucos dias aplicando o MANP, a inflamação sumiu de um jeito que eu voltei a entrar na calça jeans que estava guardada há 4 anos!"
-            </blockquote>
+        <!-- Bloco 2 (Duplicata idêntica para o loop infinito contínuo) -->
+        <div class="flex gap-4 sm:gap-6 shrink-0 pr-4 sm:pr-6 items-center" aria-hidden="true">
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-6.jpg" alt="Depoimento WhatsApp Aluna Juliana - Parte 1" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
           </div>
-
-          <div class="flex items-center gap-3 pt-3.5 border-t border-slate-100">
-            <div class="w-10 h-10 rounded-full bg-rose-100 text-brand-700 font-bold flex items-center justify-center text-sm shrink-0">
-              M
-            </div>
-            <div>
-              <div class="font-bold text-theme-darkGraphite text-sm">Mariana, 28 anos</div>
-              <div class="text-theme-mutedText text-xs">Mãe de 2 filhos</div>
-            </div>
-            <span class="ml-auto text-emerald-600 text-xs font-semibold flex items-center gap-1">
-              <i data-lucide="badge-check" class="w-4 h-4"></i> Verificada
-            </span>
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-2.jpg" alt="Depoimento WhatsApp Aluna Juliana - Parte 2" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-3.jpg" alt="Depoimento WhatsApp Aluna Camila - Parte 1" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-5.jpg" alt="Depoimento WhatsApp Aluna Camila - Parte 2" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-1.jpg" alt="Depoimento WhatsApp Aluna Amanda - Parte 1" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
+          </div>
+          <div class="shrink-0 overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 shadow-lg bg-black hover:scale-[1.02] transition-transform duration-200">
+            <img src="whatsapp/print-4.jpg" alt="Depoimento WhatsApp Aluna Amanda - Parte 2" class="h-[360px] sm:h-[420px] md:h-[480px] w-auto object-contain block" loading="lazy">
           </div>
         </div>
 
       </div>
-
     </div>
   </section>
 
@@ -1395,6 +1377,16 @@
           if (icon) icon.classList.add('rotate-180');
         }
       });
+    });
+
+    // Pausa nos carrosséis ao tocar no mobile para facilitar leitura
+    document.querySelectorAll('.marquee-whatsapp, .marquee-track').forEach(track => {
+      track.addEventListener('touchstart', () => {
+        track.style.animationPlayState = 'paused';
+      }, { passive: true });
+      track.addEventListener('touchend', () => {
+        track.style.animationPlayState = 'running';
+      }, { passive: true });
     });
 
     // Contador Regressivo Dinâmico (Sincronizado com Horário de Brasília - Encerra às 23:59:59)
