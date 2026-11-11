@@ -817,17 +817,15 @@
             </ul>
           </div>
 
-          <!-- Botão de Compra Plano Básico -->
+          <!-- Botão Secundário que dispara o Modal de Upgrade/Downsell -->
           <div>
-            <a 
-              href="https://app.zuptos.com.br/checkout/48e85ad99f483738?utm_source=facebook&utm_medium={{site_source_name}}&utm_campaign={{campaign.name}}&utm_content={{adset.name}}&utm_term={{ad.name}}&campaign_id={{campaign.id}}&adset_id={{adset.id}}&ad_id={{ad.id}}"
+            <button 
+              type="button"
               id="btn-checkout-basico"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-full text-center py-4 px-5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl border border-slate-300 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md block text-sm sm:text-base uppercase cursor-pointer no-underline"
+              class="w-full text-center py-4 px-5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl border border-slate-300 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md block text-sm sm:text-base uppercase cursor-pointer"
             >
               Quero o Plano Básico (R$ 34,90)
-            </a>
+            </button>
             <p class="text-[10px] text-center text-slate-400 mt-2">
               🔒 Compra 100% Segura e Criptografada
             </p>
@@ -1235,7 +1233,29 @@
       }, 300);
     }
 
-    // Ações do Modal Downsell
+    // Ações do Modal Downsell / Upgrade
+    const btnBasico = document.getElementById('btn-checkout-basico');
+    if (btnBasico) {
+      btnBasico.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(modalDownsell, modalDownsellBox);
+      });
+    }
+
+    const btnDownsellUpgrade = document.getElementById('btn-downsell-upgrade');
+    if (btnDownsellUpgrade) {
+      btnDownsellUpgrade.addEventListener('click', () => {
+        closeModal(modalDownsell, modalDownsellBox);
+      });
+    }
+
+    const btnDownsellStayBasic = document.getElementById('btn-downsell-stay-basic');
+    if (btnDownsellStayBasic) {
+      btnDownsellStayBasic.addEventListener('click', () => {
+        closeModal(modalDownsell, modalDownsellBox);
+      });
+    }
+
     if (closeDownsell) {
       closeDownsell.addEventListener('click', () => {
         closeModal(modalDownsell, modalDownsellBox);
